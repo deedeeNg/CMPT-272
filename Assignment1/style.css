@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .wrapper {
   margin: 5px;
   background-color: #ccc;
@@ -25,6 +19,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
+  font-weight: 300;
 }
 
 .main-header p {
@@ -53,8 +48,20 @@ legend {
   font-weight: 100;
 }
 
-.main-menu ul {
-  color: red;
+.main-menu li summary {
+  color: brown;
+}
+
+.main-menu li p {
+  padding: 15px;
+}
+
+.hide {
+  display: none;
+}
+
+.main-menu li summary:hover + .hide {
+  display: block;
 }
 
 @media (max-width: 550px) {
