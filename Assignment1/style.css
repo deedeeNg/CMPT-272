@@ -22,6 +22,7 @@ html {
 }
 
 .main-header {
+  position: relative;
   width: 100%;
   height: 150px;
   background-color: #355764;
@@ -29,6 +30,13 @@ html {
   align-items: center;
   padding: 20px;
   margin-bottom: 20px;
+}
+
+.main-header img {
+  position: absolute;
+  right: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .main-header p {
@@ -75,7 +83,7 @@ legend {
   display: block;
 }
 
-.bus-main-body {
+.falcuty-main-body {
   width: 100%;
   display: flex;
   flex-direction: row;
