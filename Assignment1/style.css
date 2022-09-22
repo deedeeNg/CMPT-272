@@ -28,6 +28,7 @@ html {
   display: flex;
   align-items: center;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .main-header p {
@@ -85,7 +86,9 @@ legend {
 .book {
   width: 23%;
   height: 700px;
+  border-radius: 20px;
   background-color: white;
+  position: relative;
 }
 
 .book img {
@@ -96,6 +99,36 @@ legend {
 .book p {
   margin: 40px 0 0 40px;
   font-size: 20px;
+}
+
+.book button {
+  opacity: 0;
+  position: absolute;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  background-color: #f5efe6;
+  color: #7895b2;
+  font-size: 25px;
+  width: 150px;
+  height: 50px;
+  margin: 20px;
+  right: 0;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.book:hover {
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+}
+
+.book:hover button {
+  opacity: 1;
+}
+
+.book button:hover {
+  background-color: #aebdca;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 550px) {
