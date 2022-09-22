@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 5px;
+  background-color: #ccc;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-body section {
+  width: 50%;
+}
+
+.main-header {
+  width: 100%;
+  height: 150px;
+  background-color: darkcyan;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-header p {
+  font-size: 50px;
+}
+
+.main-header span {
+  color: orange;
+}
+
+.textbooks p {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+legend {
+  font-size: 30px;
+  margin: 20px 0 20px 0;
+  font-weight: bold;
+}
+
+.main-menu nav {
+  padding-left: 50px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.main-menu ul {
+  color: red;
+}
+
+@media (max-width: 550px) {
+  .main-body {
+    flex-direction: column;
+  }
+}
