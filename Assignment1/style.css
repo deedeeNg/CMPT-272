@@ -140,6 +140,16 @@ legend {
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
 }
 
+footer {
+  margin: 30px;
+}
+
+footer a {
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 @media (max-width: 770px) {
 }
 @media (max-width: 550px) {
