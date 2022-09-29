@@ -53,13 +53,14 @@ html {
   font-weight: 100;
 }
 
-legend {
+.main-body span {
   font-size: 30px;
   margin: 20px 0 20px 0;
   font-weight: bold;
 }
 
 .main-menu nav {
+  margin-top: 30px;
   padding-left: 50px;
   font-size: 20px;
   font-weight: 100;
@@ -72,11 +73,18 @@ legend {
 }
 
 .main-menu li p {
+  margin: 10px;
   padding: 15px;
 }
 
 .hide {
   display: none;
+}
+
+.hide span {
+  font-size: 25px;
+  margin: 20px 0 20px 0;
+  font-weight: bold;
 }
 
 .main-menu li a:hover + .hide {
