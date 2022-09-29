@@ -18,7 +18,7 @@ html {
 }
 
 .main-body section {
-  width: 50%;
+  flex: 1 1 0px;
 }
 
 .main-header {
@@ -92,7 +92,7 @@ legend {
 }
 
 .book {
-  width: 350px;
+  width: 20%;
   height: 700px;
   border-radius: 20px;
   background-color: white;
@@ -151,7 +151,11 @@ footer a {
 }
 
 @media (max-width: 770px) {
+  .book {
+    width: 48%;
+  }
 }
+
 @media (max-width: 550px) {
   .main-header p {
     font-size: 30px;
@@ -161,6 +165,12 @@ footer a {
   }
 
   .main-body section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .book {
     width: 100%;
   }
 }
