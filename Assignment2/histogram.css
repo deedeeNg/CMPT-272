@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: red;
+}
+
+.generator {
+  margin: 0 60px 20px 60px;
+  background-color: white;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+}
