@@ -7,11 +7,38 @@
 .container {
   width: 100%;
   height: 100vh;
-  background-color: red;
+  background-color: #a62349;
 }
 
 .generator {
+  height: 100%;
   margin: 0 60px 20px 60px;
   background-color: white;
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+}
+
+.lower-bound {
+  width: 40%;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.lower-bound legend {
+  font-weight: bold;
+  color: #a62349;
+  font-size: 30px;
+}
+
+.lower-bound label {
+  width: 200px;
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px 30px 10px 50px;
+}
+
+input[type='text'] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
