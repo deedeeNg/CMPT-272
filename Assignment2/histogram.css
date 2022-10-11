@@ -48,22 +48,34 @@ legend {
   margin-bottom: 20px;
 }
 
-.lower-bound label {
+.box label {
   width: 150px;
   display: inline-block;
   font-weight: bold;
   margin: 10px 30px 10px 50px;
 }
 
-input[type='text'] {
+.lower-bound input[type='text'] {
   width: 100px;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: width 0.5s;
 }
 
-input[type='text']:hover {
-  width: 150px;
+.histogram input[type='text'] {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.stats input[type='text'] {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-size: 15px;
 }
