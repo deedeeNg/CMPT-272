@@ -27,7 +27,7 @@
   flex-direction: row;
 }
 
-.lower-bound {
+.box {
   width: 30%;
   background-color: #f2f2f2;
   padding: 20px;
@@ -37,14 +37,15 @@
   /* box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3); */
 }
 
-.lower-bound:hover {
+.box:hover {
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
 }
 
 legend {
   font-weight: bold;
   color: #a62349;
-  font-size: 30px;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
 .lower-bound label {
