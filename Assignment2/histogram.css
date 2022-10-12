@@ -15,7 +15,7 @@
 }
 
 .generator {
-  height: 95%;
+  height: 98%;
   margin: 0 60px 20px 60px;
   padding: 20px;
   background-color: white;
@@ -23,12 +23,35 @@
 }
 
 .main-body {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: 150px 150px 150px 150px auto;
+  column-gap: 70px;
+  row-gap: 30px;
+}
+
+.lower-bound {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 6;
+}
+
+.histogram {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+.stats {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 6;
 }
 
 .box {
-  width: 30%;
   background-color: #f2f2f2;
   padding: 20px;
   transition: box-shadow 0.5s;
@@ -58,7 +81,7 @@ legend {
 .lower-bound input[type='text'] {
   width: 100px;
   padding: 12px 20px;
-  margin: 5px 0;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: width 0.5s;
