@@ -11,6 +11,22 @@ function handleFileSelect(event) {
 }
 
 function handleFileLoad(event) {
-  console.log(event);
-  document.getElementById('fileContent').textContent = event.target.result;
+  csvToArray(event.target.result);
+}
+
+function csvToArray(str, delimiter = ',') {
+  const headers = str.slice(0, str.indexOf('\n')).split(delimiter);
+
+  const rows = str.slice(str.indexOf('\n') + 1).split('\r\n');
+  console.log(rows);
+
+  const arr = rows.map(function (row) {
+    const values = row.split(delimiter);
+    const el = headers.reduce(function (object, header, index) {
+      object[header] = values[index].trim();
+      return object;
+    }, {});
+    return el;
+  });
+  return arr;
 }
