@@ -1,5 +1,5 @@
 const btn = document.getElementById('mybutton');
-let lowerArr = document.querySelectorAll('.lower-bound input[type=text');
+let lowerArr = document.querySelectorAll('.lower-bound input[type=text]');
 let histogramArr = document.querySelectorAll('.histogram input[type=text]');
 let statArr = document.querySelectorAll('.stats input[type=text]');
 let arr;
@@ -47,10 +47,12 @@ function histogram() {
   }
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < lowerArr.length; j++) {
-      if (arr[i].Percent >= lowerArr[j].value) {
+      if (arr[i].Percent >= parseFloat(lowerArr[j].value)) {
         histogramArr[j - 1].value += 'O';
         break;
       }
     }
   }
 }
+
+window.addEventListener('change', histogram, false);
