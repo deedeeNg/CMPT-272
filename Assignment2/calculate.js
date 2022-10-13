@@ -1,11 +1,11 @@
 const btn = document.getElementById('mybutton');
 let lowerArr = document.querySelectorAll('.lower-bound input[type=text');
 let histogramArr = document.querySelectorAll('.histogram input[type=text]');
+let statArr = document.querySelectorAll('.stats input[type=text]');
+let arr;
 
 btn.addEventListener('click', (event) => {
-  for (let i = 0; i < 11; i++) {
-    arr[i].value = 'test';
-  }
+  histogram();
 });
 
 function init() {
@@ -22,6 +22,7 @@ function handleFileSelect(event) {
 
 function handleFileLoad(event) {
   arr = csvToArray(event.target.result);
+  histogram();
 }
 
 function csvToArray(str, delimiter = ',') {
@@ -32,10 +33,24 @@ function csvToArray(str, delimiter = ',') {
   const arr = rows.map(function (row) {
     const values = row.split(delimiter);
     const el = headers.reduce(function (object, header, index) {
-      object[header] = values[index].trim();
+      object[header.trim()] = values[index].trim();
       return object;
     }, {});
     return el;
   });
   return arr;
+}
+
+function histogram() {
+  for (let i = 0; i < histogramArr.length; i++) {
+    histogramArr[i].value = '';
+  }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 1; j < lowerArr.length; j++) {
+      if (arr[i].Percent >= lowerArr[j].value) {
+        histogramArr[j - 1].value += 'O';
+        break;
+      }
+    }
+  }
 }
