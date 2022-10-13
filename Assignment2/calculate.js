@@ -1,8 +1,11 @@
 const btn = document.getElementById('mybutton');
-let histogram_A1 = document.getElementById('histogram-A+');
+let lowerArr = document.querySelectorAll('.lower-bound input[type=text');
+let histogramArr = document.querySelectorAll('.histogram input[type=text]');
 
 btn.addEventListener('click', (event) => {
-  histogram_A1.value = 'test';
+  for (let i = 0; i < 11; i++) {
+    arr[i].value = 'test';
+  }
 });
 
 function init() {
@@ -18,7 +21,7 @@ function handleFileSelect(event) {
 }
 
 function handleFileLoad(event) {
-  csvToArray(event.target.result);
+  arr = csvToArray(event.target.result);
 }
 
 function csvToArray(str, delimiter = ',') {
