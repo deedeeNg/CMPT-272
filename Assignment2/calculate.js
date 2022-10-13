@@ -1,8 +1,8 @@
 const btn = document.getElementById('mybutton');
+let histogram_A1 = document.getElementById('histogram-A+');
 
-btn.addEventListener('click', function () {
-  var aPlus = document.getElementById('histogram-A+').value;
-  console.log(aPlus);
+btn.addEventListener('click', (event) => {
+  histogram_A1.value = 'test';
 });
 
 function init() {
