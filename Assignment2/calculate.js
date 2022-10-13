@@ -1,7 +1,7 @@
 const btn = document.getElementById('mybutton');
 let lowerArr = document.querySelectorAll('.lower-bound input[type=text]');
 let histogramArr = document.querySelectorAll('.histogram input[type=text]');
-let mean = document.getElementById('mean').value;
+let mean = document.getElementById('mean');
 let highest = document.getElementById('highest');
 let lowest = document.getElementById('lowest');
 let median = document.getElementById('median');
@@ -60,15 +60,18 @@ function histogram() {
 
 function stats() {
   let scoreArr = [];
-  mean = 0;
+  let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     scoreArr.push(arr[i][1]);
-    mean += arr[i][1];
+    sum += arr[i][1];
   }
-  mean /= arr.length;
+  sum /= arr.length;
+  mean.value = sum.toString();
   scoreArr.sort((a, b) => {
     return a - b;
   });
+  let med = scoreArr[Math.floor(scoreArr.length / 2)];
+  median.value = med.toString();
 }
 
 window.addEventListener('change', histogram, false);
