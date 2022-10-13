@@ -1,7 +1,7 @@
 const btn = document.getElementById('mybutton');
 let lowerArr = document.querySelectorAll('.lower-bound input[type=text]');
 let histogramArr = document.querySelectorAll('.histogram input[type=text]');
-let mean = document.getElementById('mean');
+let mean = document.getElementById('mean').value;
 let highest = document.getElementById('highest');
 let lowest = document.getElementById('lowest');
 let median = document.getElementById('median');
@@ -26,12 +26,7 @@ function handleFileSelect(event) {
 function handleFileLoad(event) {
   arr = csvToArray(event.target.result);
   histogram();
-}
-
-function swap(a, b) {
-  let mid = a;
-  a = b;
-  b = mid;
+  stats();
 }
 
 function csvToArray(str, delimiter = ',') {
@@ -42,7 +37,8 @@ function csvToArray(str, delimiter = ',') {
   let arr = [];
   for (let i = 0; i < rows.length; i++) {
     const values = rows[i].split(delimiter);
-    [values[0], values[1]] = [values[1], values[0]];
+    values[0] = values[0].trim();
+    values[1] = parseFloat(values[1]);
     arr.push(values);
   }
   return arr;
@@ -54,7 +50,7 @@ function histogram() {
   }
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < lowerArr.length; j++) {
-      if (arr[i][0] >= parseFloat(lowerArr[j].value)) {
+      if (arr[i][1] >= parseFloat(lowerArr[j].value)) {
         histogramArr[j - 1].value += 'O';
         break;
       }
@@ -63,8 +59,16 @@ function histogram() {
 }
 
 function stats() {
-  arr.sort();
-  console.log(arr);
+  let scoreArr = [];
+  mean = 0;
+  for (let i = 0; i < arr.length; i++) {
+    scoreArr.push(arr[i][1]);
+    mean += arr[i][1];
+  }
+  mean /= arr.length;
+  scoreArr.sort((a, b) => {
+    return a - b;
+  });
 }
 
 window.addEventListener('change', histogram, false);
