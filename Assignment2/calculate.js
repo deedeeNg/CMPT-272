@@ -1,3 +1,10 @@
+const btn = document.getElementById('mybutton');
+
+btn.addEventListener('click', function () {
+  var aPlus = document.getElementById('histogram-A+').value;
+  console.log(aPlus);
+});
+
 function init() {
   document
     .getElementById('fileInput')
@@ -18,7 +25,6 @@ function csvToArray(str, delimiter = ',') {
   const headers = str.slice(0, str.indexOf('\n')).split(delimiter);
 
   const rows = str.slice(str.indexOf('\n') + 1).split('\r\n');
-  console.log(rows);
 
   const arr = rows.map(function (row) {
     const values = row.split(delimiter);
