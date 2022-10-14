@@ -1,4 +1,3 @@
-const btn = document.getElementById('mybutton');
 let lowerArr = document.querySelectorAll('.lower-bound input[type=text]');
 let histogramArr = document.querySelectorAll('.histogram input[type=text]');
 let mean = document.getElementById('mean');
@@ -6,10 +5,6 @@ let highest = document.getElementById('highest');
 let lowest = document.getElementById('lowest');
 let median = document.getElementById('median');
 let arr = [];
-
-btn.addEventListener('click', (event) => {
-  stats();
-});
 
 function init() {
   document
@@ -66,12 +61,22 @@ function stats() {
     sum += arr[i][1];
   }
   sum /= arr.length;
-  mean.value = sum.toString();
+  sum = Math.round(sum * 100) / 100;
+  mean.value = sum;
   scoreArr.sort((a, b) => {
     return a - b;
   });
   let med = scoreArr[Math.floor(scoreArr.length / 2)];
-  median.value = med.toString();
+  median.value = med;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][1] == scoreArr[0]) {
+      lowest.value = arr[i][0] + ' (' + arr[i][1] + '%)';
+    }
+    if (arr[i][1] == scoreArr[scoreArr.length - 1]) {
+      highest.value = arr[i][0] + ' (' + arr[i][1] + '%)';
+    }
+  }
 }
 
 window.addEventListener('change', histogram, false);
