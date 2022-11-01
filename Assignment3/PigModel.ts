@@ -1,3 +1,11 @@
+enum categoriesEnum {
+  Grey,
+  Chestnut,
+  White,
+  Black
+}
+
+
 export class Pig {
   static num = 0;
   name: string;
@@ -5,10 +13,10 @@ export class Pig {
   height: string;
   weight: string;
   constructor(
-    public Name: string,
-    public Breed: string,
-    public Height: string,
-    public Weight: string
+    private Name: string,
+    private Breed: string,
+    private Height: string,
+    private Weight: string
   ) {
     this.name = Name;
     this.breed = Breed;
@@ -17,3 +25,6 @@ export class Pig {
     Pig.num++;
   }
 }
+
+
+
