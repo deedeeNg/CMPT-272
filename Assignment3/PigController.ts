@@ -14,7 +14,7 @@ export class PigController implements PigControllerInterface {
 
   add(p: Pig): void {
     this.pig.push(p);
-    localStorage.peopleArray = JSON.stringify(this.pig);
+    localStorage.pigArray = JSON.stringify(this.pig);
   }
 
   getAll() {

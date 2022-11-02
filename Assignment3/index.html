@@ -5,8 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment 3</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container"></div>
+    <div class="container">
+      <div class="main-table">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+          </tr>
+          <tr>
+            <td>Pork chop</td>
+            <td>Black</td>
+            <td>More info</td>
+            <td>Delete</td>
+          </tr>
+          <tr>
+            <td>Pork chop</td>
+            <td>Black</td>
+            <td>More info</td>
+            <td>Delete</td>
+          </tr>
+          <tr>
+            <td>Pork chop</td>
+            <td>Black</td>
+            <td>More info</td>
+            <td>Delete</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="more-info-table">
+        <table>
+          <tr>
+            <th>Name</th>
+            <td>Pork Chop</td>
+          </tr>
+          <tr>
+            <th>Breed</th>
+            <td>Portbelly</td>
+          </tr>
+          <tr>
+            <th>Height</th>
+            <td>10 hocks</td>
+          </tr>
+          <tr>
+            <th>Weight</th>
+            <td>20 Stones</td>
+          </tr>
+          <tr>
+            <th>&lt dynamic &gt</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Personality</th>
+            <td>Fair</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="add-table">
+        <form action="calculate.js" method="get">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="" /><br />
+
+          <label for="height">Height</label>
+          <input type="text" id="height" name="height" value="" /><br />
+
+          <label for="weight">Weight</label>
+          <input type="text" id="Weight" name="Weight" value="" /><br />
+
+          <label for="personality">Personality</label>
+          <input
+            type="text"
+            id="personality"
+            name="personality"
+            value=""
+          /><br />
+
+          <label for="category">Category</label>
+          <input list="category" name="category" />
+          <datalist id="category">
+            <option value="black"></option>
+            <option value="white"></option>
+            <option value="grey"></option>
+            <option value="chestnut"></option></datalist
+          ><br />
+
+          <label for="dynamic">Dynamic</label>
+          <input type="text" id="dynamic" name="dynamic" value="" /><br />
+        </form>
+        <button>Add</button>
+      </div>
+    </div>
   </body>
 </html>
