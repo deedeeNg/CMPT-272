@@ -100,7 +100,18 @@
           <label for="dynamic">Dynamic</label>
           <input type="text" id="dynamic" name="dynamic" value="" /><br />
         </form>
-        <button>Add</button>
+        <button id="add">Add</button>
+
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.47/system.js"
+          integrity="sha512-mkBpeD76fJnxFHGZstCL0mPCW6E3RFtUzfp5Ye8oQg2rxQNHy4BgHsbmvSizsq3fgF4PGozPI1BzGCB/h1Yq5g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        ></script>
+        <script>
+          System.defaultJSExtensions = true;
+          System.import('main');
+        </script>
       </div>
     </div>
   </body>
