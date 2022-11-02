@@ -2,12 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #9ed5c5;
 }
 
 .container {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
   width: 100%;
   height: 100%;
-  background-color: #9ed5c5;
+  padding: 10px;
 }
 
 table,
@@ -20,4 +24,41 @@ th {
 table {
   border-collapse: collapse;
   margin: 10px;
+}
+
+legend {
+  margin: 10px;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.add-table {
+  left: 0;
+}
+
+.add-table label {
+  width: 100px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.add-table input[type='text'],
+input[name='category'] {
+  width: 200px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background-color: yellow;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
 }
