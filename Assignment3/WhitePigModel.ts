@@ -1,7 +1,7 @@
-import { Pig } from './PigModel';
+import { categoriesEnum, Pig } from './PigModel';
 
 export class WhitePig extends Pig {
-  strength: number;
+  running: number;
   constructor(
     n: string,
     b: string,
@@ -11,7 +11,7 @@ export class WhitePig extends Pig {
     p: string
   ) {
     super(n, b, h, w, p); // constructor for Pig
-    this.strength = s;
-    this.personality = p;
+    this.running = s;
+    this.category = categoriesEnum.White;
   }
 }

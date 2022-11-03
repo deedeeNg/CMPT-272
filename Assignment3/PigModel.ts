@@ -1,4 +1,4 @@
-enum categoriesEnum {
+export enum categoriesEnum {
   Grey,
   Chestnut,
   White,
@@ -7,6 +7,7 @@ enum categoriesEnum {
 
 export class Pig {
   static num = 0;
+  category?: categoriesEnum;
   name: string;
   breed: string;
   height: number;
