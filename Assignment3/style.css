@@ -43,8 +43,10 @@ legend {
   font-weight: bold;
 }
 
-.add-table input[type='text'],
-input[name='category'] {
+input[type='text'],
+input[name='category'],
+input[type='number'],
+select {
   width: 200px;
   padding: 12px 20px;
   margin: 8px 0;

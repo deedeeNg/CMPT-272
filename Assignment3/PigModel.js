@@ -10,11 +10,6 @@ var categoriesEnum;
 })(categoriesEnum || (categoriesEnum = {}));
 var Pig = /** @class */ (function () {
     function Pig(Name, Breed, Height, Weight, Personality) {
-        this.Name = Name;
-        this.Breed = Breed;
-        this.Height = Height;
-        this.Weight = Weight;
-        this.Personality = Personality;
         this.name = Name;
         this.breed = Breed;
         this.height = Height;

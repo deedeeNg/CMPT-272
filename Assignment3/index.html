@@ -75,10 +75,13 @@
           <input type="text" id="name" name="name" value="" /><br />
 
           <label for="height">Height</label>
-          <input type="text" id="height" name="height" value="" /><br />
+          <input type="number" id="height" name="height" value="" /><br />
 
           <label for="weight">Weight</label>
-          <input type="text" id="Weight" name="Weight" value="" /><br />
+          <input type="number" id="weight" name="weight" value="" /><br />
+
+          <label for="breed">Breed</label>
+          <input type="text" id="breed" name="breed" value="" /><br />
 
           <label for="personality">Personality</label>
           <input
@@ -89,15 +92,14 @@
           /><br />
 
           <label for="category">Category</label>
-          <input list="category" name="category" />
-          <datalist id="category">
-            <option value="black"></option>
-            <option value="white"></option>
-            <option value="grey"></option>
-            <option value="chestnut"></option></datalist
+          <select name="category" id="category">
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="grey">Grey</option>
+            <option value="chestnut">Chestnut</option></select
           ><br />
 
-          <label for="dynamic">Dynamic</label>
+          <label for="dynamic" id="dynamic-label">Strength</label>
           <input type="text" id="dynamic" name="dynamic" value="" /><br />
         </form>
         <button id="add">Add</button>

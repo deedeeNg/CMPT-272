@@ -13,11 +13,11 @@ export class Pig {
   weight: number;
   personality: string;
   constructor(
-    private Name: string,
-    private Breed: string,
-    private Height: number,
-    private Weight: number,
-    private Personality: string
+    Name: string,
+    Breed: string,
+    Height: number,
+    Weight: number,
+    Personality: string
   ) {
     this.name = Name;
     this.breed = Breed;
