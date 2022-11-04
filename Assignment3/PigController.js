@@ -15,6 +15,9 @@ var PigController = /** @class */ (function () {
     PigController.prototype.get = function (index) {
         return this.pig[index];
     };
+    PigController.prototype.remove = function (index) {
+        this.pig.splice(index, 1);
+    };
     return PigController;
 }());
 exports.PigController = PigController;

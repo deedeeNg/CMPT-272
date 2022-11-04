@@ -12,14 +12,18 @@ var breed = document.getElementById('breed')! as HTMLInputElement;
 var height = document.getElementById('height')! as HTMLInputElement;
 var weight = document.getElementById('weight')! as HTMLInputElement;
 var personality = document.getElementById('personality')! as HTMLInputElement;
+var dynamic = document.getElementById('dynamic')! as HTMLInputElement;
 
 var categories = document.getElementById('category')! as HTMLInputElement;
 var dynamicLabel = document.getElementById(
   'dynamic-label'
 )! as HTMLInputElement;
-var dynamic = document.getElementById('dynamic')! as HTMLInputElement;
 
 var table = document.getElementById('table1')! as HTMLTableElement;
+
+document.getElementById('testBtn')!.addEventListener('click', function () {
+  console.log(localStorage.pigArray);
+});
 
 document.getElementById('add')!.addEventListener('click', function () {
   if (categories.value === 'black') {
@@ -83,8 +87,6 @@ document.getElementById('add')!.addEventListener('click', function () {
   let moreInfoData = document.getElementsByClassName('more-info-data');
   let moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
 
-  console.log(moreInfoData.length);
-
   for (let i = 0; i < moreInfo.length; i++) {
     moreInfo[i].addEventListener('click', function () {
       moreInfoData[0].innerHTML = pc.get(i).name;
@@ -110,17 +112,55 @@ document.getElementById('add')!.addEventListener('click', function () {
 });
 
 categories.addEventListener('change', function () {
+  var options = document.querySelectorAll('#breed option');
+  options.forEach((o) => o.remove());
   if (categories.value === 'white') {
     dynamic.type = 'number';
     dynamicLabel.textContent = 'Running';
+    var option1 = document.createElement('option');
+    option1.text = 'Chester';
+    breed.append(option1);
+    var option2 = document.createElement('option');
+    option2.text = 'Duroc';
+    breed.append(option2);
+    var option3 = document.createElement('option');
+    option3.text = 'Landrace';
+    breed.append(option3);
   } else if (categories.value === 'black') {
     dynamic.type = 'number';
     dynamicLabel.textContent = 'Strength';
+    var option1 = document.createElement('option');
+    option1.text = 'Large';
+    breed.append(option1);
+    var option2 = document.createElement('option');
+    option2.text = 'Berkshire';
+    breed.append(option2);
+    var option3 = document.createElement('option');
+    option3.text = 'Hampshire';
+    breed.append(option3);
   } else if (categories.value === 'grey') {
     dynamic.type = 'number';
     dynamicLabel.textContent = 'Swimming';
+    var option1 = document.createElement('option');
+    option1.text = 'Poland China';
+    breed.append(option1);
+    var option2 = document.createElement('option');
+    option2.text = 'Spotted';
+    breed.append(option2);
+    var option3 = document.createElement('option');
+    option3.text = 'Yorkshire';
+    breed.append(option3);
   } else {
     dynamic.type = 'text';
     dynamicLabel.textContent = 'Language';
+    var option1 = document.createElement('option');
+    option1.text = 'Welsh';
+    breed.append(option1);
+    var option2 = document.createElement('option');
+    option2.text = 'Middle';
+    breed.append(option2);
+    var option3 = document.createElement('option');
+    option3.text = 'American Landrace';
+    breed.append(option3);
   }
 });

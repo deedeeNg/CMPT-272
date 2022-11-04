@@ -8,6 +8,7 @@ interface PigControllerInterface {
   add(p: Pig): void;
   getAll(): Pig[];
   get(index: number): Pig;
+  remove(index: number): void;
 }
 
 export class PigController implements PigControllerInterface {
@@ -22,11 +23,15 @@ export class PigController implements PigControllerInterface {
     localStorage.pigArray = JSON.stringify(this.pig);
   }
 
-  getAll() {
+  getAll(): Pig[] {
     return JSON.parse(localStorage.pigArray);
   }
 
-  get(index: number) {
+  get(index: number): Pig {
     return this.pig[index];
+  }
+
+  remove(index: number): void {
+    this.pig.splice(index, 1);
   }
 }
