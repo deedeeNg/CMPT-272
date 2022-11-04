@@ -22,6 +22,7 @@ var dynamic = document.getElementById('dynamic')! as HTMLInputElement;
 var table = document.getElementById('table1')! as HTMLTableElement;
 
 var moreInfo = document.getElementsByClassName('.moreInfo');
+var moreInfoData = document.getElementsByClassName('.more-info-data');
 
 document.getElementById('add')!.addEventListener('click', function () {
   if (categories.value === 'black') {
@@ -82,10 +83,17 @@ document.getElementById('add')!.addEventListener('click', function () {
     "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
 
   moreInfo = document.getElementsByClassName('moreInfo');
+  moreInfoData = document.getElementsByClassName('more-info-data');
+
+  console.log(moreInfoData.length);
 
   for (let i = 0; i < moreInfo.length; i++) {
     moreInfo[i].addEventListener('click', function () {
-      console.log('haha');
+      moreInfoData[0].innerHTML = pc.get(i).name;
+      moreInfoData[1].innerHTML = pc.get(i).breed;
+      moreInfoData[2].innerHTML = pc.get(i).height.toString() + 'Hocks';
+      moreInfoData[3].innerHTML = pc.get(i).weight.toString() + 'Stones';
+      moreInfoData[5].innerHTML = pc.get(i).personality;
     });
   }
 });
