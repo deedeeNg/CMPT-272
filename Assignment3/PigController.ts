@@ -20,4 +20,8 @@ export class PigController implements PigControllerInterface {
   getAll() {
     return JSON.parse(localStorage.pigArray);
   }
+
+  get(index: number) {
+    return this.pig[index];
+  }
 }

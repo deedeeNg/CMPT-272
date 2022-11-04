@@ -21,20 +21,7 @@ var dynamic = document.getElementById('dynamic')! as HTMLInputElement;
 
 var table = document.getElementById('table1')! as HTMLTableElement;
 
-document.getElementById('testBtn')!.addEventListener('click', function () {
-  let newRow = table.insertRow(-1);
-
-  // Insert a cell in the row at index 0
-  let newCell0 = newRow.insertCell(0);
-  let newCell1 = newRow.insertCell(1);
-  let newCell2 = newRow.insertCell(2);
-  let newCell3 = newRow.insertCell(3);
-
-  newCell0.innerHTML = 'Pork';
-  newCell1.innerHTML = 'aberico';
-  newCell2.innerHTML = 'More Info';
-  newCell3.innerHTML = 'Delete';
-});
+var moreInfo = document.getElementsByClassName('.moreInfo');
 
 document.getElementById('add')!.addEventListener('click', function () {
   if (categories.value === 'black') {
@@ -89,8 +76,18 @@ document.getElementById('add')!.addEventListener('click', function () {
 
   newCell0.innerHTML = name.value;
   newCell1.innerHTML = categories.value;
-  newCell2.innerHTML = 'More Info';
-  newCell3.innerHTML = 'Delete';
+  newCell2.innerHTML =
+    "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
+  newCell3.innerHTML =
+    "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+
+  moreInfo = document.getElementsByClassName('moreInfo');
+
+  for (let i = 0; i < moreInfo.length; i++) {
+    moreInfo[i].addEventListener('click', function () {
+      console.log('haha');
+    });
+  }
 });
 
 categories.addEventListener('change', function () {

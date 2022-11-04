@@ -12,6 +12,9 @@ var PigController = /** @class */ (function () {
     PigController.prototype.getAll = function () {
         return JSON.parse(localStorage.pigArray);
     };
+    PigController.prototype.get = function (index) {
+        return this.pig[index];
+    };
     return PigController;
 }());
 exports.PigController = PigController;

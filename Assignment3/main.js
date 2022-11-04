@@ -15,18 +15,7 @@ var categories = document.getElementById('category');
 var dynamicLabel = document.getElementById('dynamic-label');
 var dynamic = document.getElementById('dynamic');
 var table = document.getElementById('table1');
-document.getElementById('testBtn').addEventListener('click', function () {
-    var newRow = table.insertRow(-1);
-    // Insert a cell in the row at index 0
-    var newCell0 = newRow.insertCell(0);
-    var newCell1 = newRow.insertCell(1);
-    var newCell2 = newRow.insertCell(2);
-    var newCell3 = newRow.insertCell(3);
-    newCell0.innerHTML = 'Pork';
-    newCell1.innerHTML = 'aberico';
-    newCell2.innerHTML = 'More Info';
-    newCell3.innerHTML = 'Delete';
-});
+var moreInfo = document.getElementsByClassName('.moreInfo');
 document.getElementById('add').addEventListener('click', function () {
     if (categories.value === 'black') {
         var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
@@ -52,8 +41,17 @@ document.getElementById('add').addEventListener('click', function () {
     var newCell3 = newRow.insertCell(3);
     newCell0.innerHTML = name.value;
     newCell1.innerHTML = categories.value;
-    newCell2.innerHTML = 'More Info';
-    newCell3.innerHTML = 'Delete';
+    newCell2.innerHTML =
+        "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
+    newCell3.innerHTML =
+        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+    console.log('haha');
+    moreInfo = document.getElementsByClassName('moreInfo');
+    for (var i = 0; i < moreInfo.length; i++) {
+        moreInfo[i].addEventListener('click', function () {
+            console.log('haha');
+        });
+    }
 });
 categories.addEventListener('change', function () {
     if (categories.value === 'white') {
