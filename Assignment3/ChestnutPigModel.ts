@@ -1,7 +1,6 @@
 import { categoriesEnum, Pig } from './PigModel';
 
 export class ChestnutPig extends Pig {
-  language: string;
   constructor(
     n: string,
     b: string,

@@ -1,7 +1,6 @@
 import { categoriesEnum, Pig } from './PigModel';
 
 export class WhitePig extends Pig {
-  running: number;
   constructor(
     n: string,
     b: string,

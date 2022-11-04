@@ -17,6 +17,7 @@ var dynamic = document.getElementById('dynamic');
 var table = document.getElementById('table1');
 var moreInfo = document.getElementsByClassName('.moreInfo');
 var moreInfoData = document.getElementsByClassName('.more-info-data');
+var moreInfoDynamic = document.getElementsByClassName('.more-info-dynamic');
 document.getElementById('add').addEventListener('click', function () {
     if (categories.value === 'black') {
         var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
@@ -48,14 +49,19 @@ document.getElementById('add').addEventListener('click', function () {
         "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
     moreInfo = document.getElementsByClassName('moreInfo');
     moreInfoData = document.getElementsByClassName('more-info-data');
+    moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
     console.log(moreInfoData.length);
     var _loop_1 = function (i) {
         moreInfo[i].addEventListener('click', function () {
             moreInfoData[0].innerHTML = pc.get(i).name;
             moreInfoData[1].innerHTML = pc.get(i).breed;
-            moreInfoData[2].innerHTML = pc.get(i).height.toString() + 'Hocks';
-            moreInfoData[3].innerHTML = pc.get(i).weight.toString() + 'Stones';
+            moreInfoData[2].innerHTML = pc.get(i).height.toString() + ' Hocks';
+            moreInfoData[3].innerHTML = pc.get(i).weight.toString() + ' Stones';
             moreInfoData[5].innerHTML = pc.get(i).personality;
+            if (pc.get(i).category == 0) {
+                moreInfoData[4].innerHTML = pc.get(i).swimming.toString();
+                moreInfoDynamic[0].innerHTML = 'Swimming';
+            }
         });
     };
     for (var i = 0; i < moreInfo.length; i++) {

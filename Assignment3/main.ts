@@ -21,9 +21,6 @@ var dynamic = document.getElementById('dynamic')! as HTMLInputElement;
 
 var table = document.getElementById('table1')! as HTMLTableElement;
 
-var moreInfo = document.getElementsByClassName('.moreInfo');
-var moreInfoData = document.getElementsByClassName('.more-info-data');
-
 document.getElementById('add')!.addEventListener('click', function () {
   if (categories.value === 'black') {
     var blackPig = new BlackPig(
@@ -82,8 +79,9 @@ document.getElementById('add')!.addEventListener('click', function () {
   newCell3.innerHTML =
     "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
 
-  moreInfo = document.getElementsByClassName('moreInfo');
-  moreInfoData = document.getElementsByClassName('more-info-data');
+  let moreInfo = document.getElementsByClassName('moreInfo');
+  let moreInfoData = document.getElementsByClassName('more-info-data');
+  let moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
 
   console.log(moreInfoData.length);
 
@@ -91,9 +89,22 @@ document.getElementById('add')!.addEventListener('click', function () {
     moreInfo[i].addEventListener('click', function () {
       moreInfoData[0].innerHTML = pc.get(i).name;
       moreInfoData[1].innerHTML = pc.get(i).breed;
-      moreInfoData[2].innerHTML = pc.get(i).height.toString() + 'Hocks';
-      moreInfoData[3].innerHTML = pc.get(i).weight.toString() + 'Stones';
+      moreInfoData[2].innerHTML = pc.get(i).height.toString() + ' Hocks';
+      moreInfoData[3].innerHTML = pc.get(i).weight.toString() + ' Stones';
       moreInfoData[5].innerHTML = pc.get(i).personality;
+      if (pc.get(i).category == 0) {
+        moreInfoData[4].innerHTML = pc.get(i).swimming!.toString();
+        moreInfoDynamic[0].innerHTML = 'Swimming';
+      } else if (pc.get(i).category == 1) {
+        moreInfoData[4].innerHTML = pc.get(i).language!;
+        moreInfoDynamic[0].innerHTML = 'Language';
+      } else if (pc.get(i).category == 2) {
+        moreInfoData[4].innerHTML = pc.get(i).running!.toString();
+        moreInfoDynamic[0].innerHTML = 'Running';
+      } else {
+        moreInfoData[4].innerHTML = pc.get(i).strength!.toString();
+        moreInfoDynamic[0].innerHTML = 'Strength';
+      }
     });
   }
 });

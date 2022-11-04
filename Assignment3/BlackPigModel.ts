@@ -1,7 +1,6 @@
 import { categoriesEnum, Pig } from './PigModel';
 
 export class BlackPig extends Pig {
-  strength: number;
   constructor(
     n: string,
     b: string,
