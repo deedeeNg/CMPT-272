@@ -16,7 +16,6 @@ var categories = document.getElementById('category');
 var dynamicLabel = document.getElementById('dynamic-label');
 var num = -1;
 var table = document.getElementById('table1');
-document.getElementById('testBtn').addEventListener('click', function () { });
 document.getElementById('add').addEventListener('click', function () {
     num++;
     if (categories.value === 'black') {
@@ -60,7 +59,14 @@ document.getElementById('add').addEventListener('click', function () {
 function deletedata(str) {
     var _a;
     var i = Number(str.replace(/^\D+/g, ''));
-    (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
+    var confirmAction = confirm('Are you sure to delete this little cute pig UwU?');
+    if (confirmAction) {
+        alert('Oink Oink UwU');
+        (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
+    }
+    else {
+        alert('Arigato Master Uwu');
+    }
 }
 function change(str) {
     var i = Number(str.replace(/^\D+/g, ''));

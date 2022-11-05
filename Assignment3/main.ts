@@ -23,8 +23,6 @@ var num = -1;
 
 var table = document.getElementById('table1')! as HTMLTableElement;
 
-document.getElementById('testBtn')!.addEventListener('click', function () {});
-
 document.getElementById('add')!.addEventListener('click', function () {
   num++;
   if (categories.value === 'black') {
@@ -98,7 +96,13 @@ document.getElementById('add')!.addEventListener('click', function () {
 
 function deletedata(str: String) {
   let i = Number(str.replace(/^\D+/g, ''));
-  document.getElementById('row' + i.toString())?.remove();
+  let confirmAction = confirm(
+    'Are you sure to delete this little cute pig UwU?'
+  );
+  if (confirmAction) {
+    document.getElementById('row' + i.toString())?.remove();
+  } else {
+  }
 }
 
 function change(str: String) {
