@@ -21,9 +21,7 @@ var dynamicLabel = document.getElementById(
 
 var table = document.getElementById('table1')! as HTMLTableElement;
 
-document.getElementById('testBtn')!.addEventListener('click', function () {
-  console.log(localStorage.pigArray);
-});
+document.getElementById('testBtn')!.addEventListener('click', function () {});
 
 document.getElementById('add')!.addEventListener('click', function () {
   if (categories.value === 'black') {
@@ -69,6 +67,7 @@ document.getElementById('add')!.addEventListener('click', function () {
   }
 
   let newRow = table.insertRow(-1);
+  newRow.id = 'row' + (pc.pig.length - 1).toString();
 
   // Insert a cell in the row at index 0
   let newCell0 = newRow.insertCell(0);
@@ -81,11 +80,14 @@ document.getElementById('add')!.addEventListener('click', function () {
   newCell2.innerHTML =
     "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
   newCell3.innerHTML =
-    "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+    "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='delete'>Delete</span>";
 
   let moreInfo = document.getElementsByClassName('moreInfo');
   let moreInfoData = document.getElementsByClassName('more-info-data');
   let moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
+  let deleteData = document.getElementsByClassName('delete');
+
+  console.log(deleteData.length);
 
   for (let i = 0; i < moreInfo.length; i++) {
     moreInfo[i].addEventListener('click', function () {
@@ -107,6 +109,10 @@ document.getElementById('add')!.addEventListener('click', function () {
         moreInfoData[4].innerHTML = pc.get(i).strength!.toString();
         moreInfoDynamic[0].innerHTML = 'Strength';
       }
+    });
+    deleteData[i].addEventListener('click', function () {
+      pc.remove(i);
+      document.getElementById('row' + i.toString())?.remove();
     });
   }
 });

@@ -17,6 +17,7 @@ var PigController = /** @class */ (function () {
     };
     PigController.prototype.remove = function (index) {
         this.pig.splice(index, 1);
+        localStorage.pigArray = JSON.stringify(this.pig);
     };
     return PigController;
 }());

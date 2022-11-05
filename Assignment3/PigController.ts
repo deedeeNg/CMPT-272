@@ -33,5 +33,6 @@ export class PigController implements PigControllerInterface {
 
   remove(index: number): void {
     this.pig.splice(index, 1);
+    localStorage.pigArray = JSON.stringify(this.pig);
   }
 }

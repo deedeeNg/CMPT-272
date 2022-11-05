@@ -15,9 +15,7 @@ var dynamic = document.getElementById('dynamic');
 var categories = document.getElementById('category');
 var dynamicLabel = document.getElementById('dynamic-label');
 var table = document.getElementById('table1');
-document.getElementById('testBtn').addEventListener('click', function () {
-    console.log(localStorage.pigArray);
-});
+document.getElementById('testBtn').addEventListener('click', function () { });
 document.getElementById('add').addEventListener('click', function () {
     if (categories.value === 'black') {
         var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
@@ -36,6 +34,7 @@ document.getElementById('add').addEventListener('click', function () {
         pc.add(chestnutPig);
     }
     var newRow = table.insertRow(-1);
+    newRow.id = 'row' + (pc.pig.length - 1).toString();
     // Insert a cell in the row at index 0
     var newCell0 = newRow.insertCell(0);
     var newCell1 = newRow.insertCell(1);
@@ -46,10 +45,12 @@ document.getElementById('add').addEventListener('click', function () {
     newCell2.innerHTML =
         "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
     newCell3.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='delete'>Delete</span>";
     var moreInfo = document.getElementsByClassName('moreInfo');
     var moreInfoData = document.getElementsByClassName('more-info-data');
     var moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
+    var deleteData = document.getElementsByClassName('delete');
+    console.log(deleteData.length);
     var _loop_1 = function (i) {
         moreInfo[i].addEventListener('click', function () {
             moreInfoData[0].innerHTML = pc.get(i).name;
@@ -73,6 +74,11 @@ document.getElementById('add').addEventListener('click', function () {
                 moreInfoData[4].innerHTML = pc.get(i).strength.toString();
                 moreInfoDynamic[0].innerHTML = 'Strength';
             }
+        });
+        deleteData[i].addEventListener('click', function () {
+            var _a;
+            pc.remove(i);
+            (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
         });
     };
     for (var i = 0; i < moreInfo.length; i++) {
