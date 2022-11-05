@@ -19,11 +19,14 @@ var dynamicLabel = document.getElementById(
   'dynamic-label'
 )! as HTMLInputElement;
 
+var num = -1;
+
 var table = document.getElementById('table1')! as HTMLTableElement;
 
 document.getElementById('testBtn')!.addEventListener('click', function () {});
 
 document.getElementById('add')!.addEventListener('click', function () {
+  num++;
   if (categories.value === 'black') {
     var blackPig = new BlackPig(
       name.value,
@@ -67,7 +70,7 @@ document.getElementById('add')!.addEventListener('click', function () {
   }
 
   let newRow = table.insertRow(-1);
-  newRow.id = 'row' + (pc.pig.length - 1).toString();
+  newRow.id = 'row' + num.toString();
 
   // Insert a cell in the row at index 0
   let newCell0 = newRow.insertCell(0);
@@ -78,44 +81,63 @@ document.getElementById('add')!.addEventListener('click', function () {
   newCell0.innerHTML = name.value;
   newCell1.innerHTML = categories.value;
   newCell2.innerHTML =
-    "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
+    "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+  newCell2.classList.add('moreInfo' + num.toString());
   newCell3.innerHTML =
-    "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='delete'>Delete</span>";
+    "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+  newCell3.classList.add('delete' + num.toString());
 
-  let moreInfo = document.getElementsByClassName('moreInfo');
+  newCell2.addEventListener('click', function () {
+    change(newCell2.className);
+  });
+
+  newCell3.addEventListener('click', function () {
+    deletedata(newCell3.className);
+  });
+});
+
+function deletedata(str: String) {
+  let i = Number(str.replace(/^\D+/g, ''));
+  document.getElementById('row' + i.toString())?.remove();
+}
+
+function change(str: String) {
+  let i = Number(str.replace(/^\D+/g, ''));
+  console.log(i);
+
   let moreInfoData = document.getElementsByClassName('more-info-data');
   let moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
-  let deleteData = document.getElementsByClassName('delete');
 
-  console.log(deleteData.length);
+  let Name = pc.get(i).name;
+  let Breed = pc.get(i).breed;
+  let Height = pc.get(i).height.toString() + ' Hocks';
+  let Weight = pc.get(i).weight.toString() + ' Stones';
+  let Personality = pc.get(i).personality;
 
-  for (let i = 0; i < moreInfo.length; i++) {
-    moreInfo[i].addEventListener('click', function () {
-      moreInfoData[0].innerHTML = pc.get(i).name;
-      moreInfoData[1].innerHTML = pc.get(i).breed;
-      moreInfoData[2].innerHTML = pc.get(i).height.toString() + ' Hocks';
-      moreInfoData[3].innerHTML = pc.get(i).weight.toString() + ' Stones';
-      moreInfoData[5].innerHTML = pc.get(i).personality;
-      if (pc.get(i).category == 0) {
-        moreInfoData[4].innerHTML = pc.get(i).swimming!.toString();
-        moreInfoDynamic[0].innerHTML = 'Swimming';
-      } else if (pc.get(i).category == 1) {
-        moreInfoData[4].innerHTML = pc.get(i).language!;
-        moreInfoDynamic[0].innerHTML = 'Language';
-      } else if (pc.get(i).category == 2) {
-        moreInfoData[4].innerHTML = pc.get(i).running!.toString();
-        moreInfoDynamic[0].innerHTML = 'Running';
-      } else {
-        moreInfoData[4].innerHTML = pc.get(i).strength!.toString();
-        moreInfoDynamic[0].innerHTML = 'Strength';
-      }
-    });
-    deleteData[i].addEventListener('click', function () {
-      pc.remove(i);
-      document.getElementById('row' + i.toString())?.remove();
-    });
+  moreInfoData[0].innerHTML = Name;
+  moreInfoData[1].innerHTML = Breed;
+  moreInfoData[2].innerHTML = Height + ' Hocks';
+  moreInfoData[3].innerHTML = Weight + ' Stones';
+  moreInfoData[5].innerHTML = Personality;
+
+  if (pc.get(i).category == 0) {
+    let Swimming = pc.get(i).swimming!.toString();
+    moreInfoData[4].innerHTML = Swimming;
+    moreInfoDynamic[0].innerHTML = 'Swimming';
+  } else if (pc.get(i).category == 1) {
+    let Language = pc.get(i).language!;
+    moreInfoData[4].innerHTML = Language;
+    moreInfoDynamic[0].innerHTML = 'Language';
+  } else if (pc.get(i).category == 2) {
+    let Running = pc.get(i).running!.toString();
+    moreInfoData[4].innerHTML = Running;
+    moreInfoDynamic[0].innerHTML = 'Running';
+  } else {
+    let Strength = pc.get(i).strength!.toString();
+    moreInfoData[4].innerHTML = Strength;
+    moreInfoDynamic[0].innerHTML = 'Strength';
   }
-});
+}
 
 categories.addEventListener('change', function () {
   var options = document.querySelectorAll('#breed option');

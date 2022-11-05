@@ -14,9 +14,11 @@ var personality = document.getElementById('personality');
 var dynamic = document.getElementById('dynamic');
 var categories = document.getElementById('category');
 var dynamicLabel = document.getElementById('dynamic-label');
+var num = -1;
 var table = document.getElementById('table1');
 document.getElementById('testBtn').addEventListener('click', function () { });
 document.getElementById('add').addEventListener('click', function () {
+    num++;
     if (categories.value === 'black') {
         var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
         pc.add(blackPig);
@@ -34,7 +36,7 @@ document.getElementById('add').addEventListener('click', function () {
         pc.add(chestnutPig);
     }
     var newRow = table.insertRow(-1);
-    newRow.id = 'row' + (pc.pig.length - 1).toString();
+    newRow.id = 'row' + num.toString();
     // Insert a cell in the row at index 0
     var newCell0 = newRow.insertCell(0);
     var newCell1 = newRow.insertCell(1);
@@ -43,48 +45,59 @@ document.getElementById('add').addEventListener('click', function () {
     newCell0.innerHTML = name.value;
     newCell1.innerHTML = categories.value;
     newCell2.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='moreInfo'>More Info</span>";
+        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+    newCell2.classList.add('moreInfo' + num.toString());
     newCell3.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;' class='delete'>Delete</span>";
-    var moreInfo = document.getElementsByClassName('moreInfo');
+        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+    newCell3.classList.add('delete' + num.toString());
+    newCell2.addEventListener('click', function () {
+        change(newCell2.className);
+    });
+    newCell3.addEventListener('click', function () {
+        deletedata(newCell3.className);
+    });
+});
+function deletedata(str) {
+    var _a;
+    var i = Number(str.replace(/^\D+/g, ''));
+    (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
+}
+function change(str) {
+    var i = Number(str.replace(/^\D+/g, ''));
+    console.log(i);
     var moreInfoData = document.getElementsByClassName('more-info-data');
     var moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
-    var deleteData = document.getElementsByClassName('delete');
-    console.log(deleteData.length);
-    var _loop_1 = function (i) {
-        moreInfo[i].addEventListener('click', function () {
-            moreInfoData[0].innerHTML = pc.get(i).name;
-            moreInfoData[1].innerHTML = pc.get(i).breed;
-            moreInfoData[2].innerHTML = pc.get(i).height.toString() + ' Hocks';
-            moreInfoData[3].innerHTML = pc.get(i).weight.toString() + ' Stones';
-            moreInfoData[5].innerHTML = pc.get(i).personality;
-            if (pc.get(i).category == 0) {
-                moreInfoData[4].innerHTML = pc.get(i).swimming.toString();
-                moreInfoDynamic[0].innerHTML = 'Swimming';
-            }
-            else if (pc.get(i).category == 1) {
-                moreInfoData[4].innerHTML = pc.get(i).language;
-                moreInfoDynamic[0].innerHTML = 'Language';
-            }
-            else if (pc.get(i).category == 2) {
-                moreInfoData[4].innerHTML = pc.get(i).running.toString();
-                moreInfoDynamic[0].innerHTML = 'Running';
-            }
-            else {
-                moreInfoData[4].innerHTML = pc.get(i).strength.toString();
-                moreInfoDynamic[0].innerHTML = 'Strength';
-            }
-        });
-        deleteData[i].addEventListener('click', function () {
-            var _a;
-            pc.remove(i);
-            (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
-        });
-    };
-    for (var i = 0; i < moreInfo.length; i++) {
-        _loop_1(i);
+    var Name = pc.get(i).name;
+    var Breed = pc.get(i).breed;
+    var Height = pc.get(i).height.toString() + ' Hocks';
+    var Weight = pc.get(i).weight.toString() + ' Stones';
+    var Personality = pc.get(i).personality;
+    moreInfoData[0].innerHTML = Name;
+    moreInfoData[1].innerHTML = Breed;
+    moreInfoData[2].innerHTML = Height + ' Hocks';
+    moreInfoData[3].innerHTML = Weight + ' Stones';
+    moreInfoData[5].innerHTML = Personality;
+    if (pc.get(i).category == 0) {
+        var Swimming = pc.get(i).swimming.toString();
+        moreInfoData[4].innerHTML = Swimming;
+        moreInfoDynamic[0].innerHTML = 'Swimming';
     }
-});
+    else if (pc.get(i).category == 1) {
+        var Language = pc.get(i).language;
+        moreInfoData[4].innerHTML = Language;
+        moreInfoDynamic[0].innerHTML = 'Language';
+    }
+    else if (pc.get(i).category == 2) {
+        var Running = pc.get(i).running.toString();
+        moreInfoData[4].innerHTML = Running;
+        moreInfoDynamic[0].innerHTML = 'Running';
+    }
+    else {
+        var Strength = pc.get(i).strength.toString();
+        moreInfoData[4].innerHTML = Strength;
+        moreInfoDynamic[0].innerHTML = 'Strength';
+    }
+}
 categories.addEventListener('change', function () {
     var options = document.querySelectorAll('#breed option');
     options.forEach(function (o) { return o.remove(); });
