@@ -9,89 +9,99 @@
   </head>
   <body>
     <div class="container">
-      <div class="main-table">
-        <table id="table1">
-          <thead>
+      <div class="left">
+        <div class="main-table">
+          <table id="table1">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="right">
+        <div class="more-info-table">
+          <legend>More info</legend>
+          <table>
             <tr>
               <th>Name</th>
-              <th>Category</th>
-              <th></th>
-              <th></th>
+              <td class="more-info-data"></td>
             </tr>
-          </thead>
-        </table>
-      </div>
+            <tr>
+              <th>Breed</th>
+              <td class="more-info-data"></td>
+            </tr>
+            <tr>
+              <th>Height</th>
+              <td class="more-info-data"></td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td class="more-info-data"></td>
+            </tr>
+            <tr>
+              <th class="more-info-dynamic">&ltdynamic&gt</th>
+              <td class="more-info-data"></td>
+            </tr>
+            <tr>
+              <th>Personality</th>
+              <td class="more-info-data"></td>
+            </tr>
+          </table>
+        </div>
 
-      <div class="more-info-table">
-        <legend>More info</legend>
-        <table>
-          <tr>
-            <th>Name</th>
-            <td class="more-info-data"></td>
-          </tr>
-          <tr>
-            <th>Breed</th>
-            <td class="more-info-data"></td>
-          </tr>
-          <tr>
-            <th>Height</th>
-            <td class="more-info-data"></td>
-          </tr>
-          <tr>
-            <th>Weight</th>
-            <td class="more-info-data"></td>
-          </tr>
-          <tr>
-            <th class="more-info-dynamic">&ltdynamic&gt</th>
-            <td class="more-info-data"></td>
-          </tr>
-          <tr>
-            <th>Personality</th>
-            <td class="more-info-data"></td>
-          </tr>
-        </table>
-      </div>
+        <div class="add-table">
+          <legend>Adding</legend>
+          <form action="calculate.js" method="get">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="" /><br />
 
-      <div class="add-table">
-        <legend>Adding</legend>
-        <form action="calculate.js" method="get">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" value="" /><br />
+            <label for="height">Height</label>
+            <input type="number" id="height" name="height" value="" /><br />
 
-          <label for="height">Height</label>
-          <input type="number" id="height" name="height" value="" /><br />
+            <label for="weight">Weight</label>
+            <input type="number" id="weight" name="weight" value="" /><br />
 
-          <label for="weight">Weight</label>
-          <input type="number" id="weight" name="weight" value="" /><br />
+            <label for="personality">Personality</label>
+            <input
+              type="text"
+              id="personality"
+              name="personality"
+              value=""
+            /><br />
 
-          <label for="personality">Personality</label>
-          <input
-            type="text"
-            id="personality"
-            name="personality"
-            value=""
-          /><br />
+            <label for="category">Category</label>
+            <select name="category" id="category">
+              <option value="black">Black</option>
+              <option value="white">White</option>
+              <option value="grey">Grey</option>
+              <option value="chestnut">Chestnut</option></select
+            ><br />
 
-          <label for="category">Category</label>
-          <select name="category" id="category">
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="grey">Grey</option>
-            <option value="chestnut">Chestnut</option></select
-          ><br />
+            <label for="breed">Breed</label>
+            <select name="breed" id="breed">
+              <option value="Large">Large</option>
+              <option value="Berkshire">Berkshire</option>
+              <option value="Hampshire">Hampshire</option>
+            </select>
+            <br />
 
-          <label for="breed">Breed</label>
-          <select name="breed" id="breed">
-            <option value="Large">Large</option>
-            <option value="Berkshire">Berkshire</option>
-            <option value="Hampshire">Hampshire</option>
-          </select>
-          <br />
-
-          <label for="dynamic" id="dynamic-label">Strength</label>
-          <input type="number" id="dynamic" name="dynamic" value="" /><br />
-        </form>
-        <button id="add">Add</button>
+            <label for="dynamic" id="dynamic-label">Strength</label>
+            <input
+              type="range"
+              id="dynamic"
+              name="dynamic"
+              min="0"
+              max="100"
+              value="50"
+            /><br />
+          </form>
+          <button id="add">Add</button>
+        </div>
 
         <script
           src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.47/system.js"

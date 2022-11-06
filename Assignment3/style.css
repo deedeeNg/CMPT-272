@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  padding: 10px;
 }
 body {
   margin: 0;
@@ -10,10 +11,14 @@ body {
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.left,
+.right {
+  padding: 10px;
 }
 
 th,
@@ -21,6 +26,21 @@ td {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
+}
+
+td {
+  position: relative;
+}
+
+td:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
 }
 
 th {
@@ -37,6 +57,10 @@ table {
 
 thead th {
   background-color: #55608f;
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 legend {
@@ -76,4 +100,9 @@ button {
   border: none;
   margin-top: 20px;
   border-radius: 5px;
+}
+
+input[type='range'] {
+  margin-top: 10px;
+  width: 200px;
 }

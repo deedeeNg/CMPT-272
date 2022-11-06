@@ -17,44 +17,52 @@ var dynamicLabel = document.getElementById('dynamic-label');
 var num = -1;
 var table = document.getElementById('table1');
 document.getElementById('add').addEventListener('click', function () {
-    num++;
-    if (categories.value === 'black') {
-        var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-        pc.add(blackPig);
-    }
-    else if (categories.value === 'white') {
-        var whitePig = new WhitePigModel_1.WhitePig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-        pc.add(whitePig);
-    }
-    else if (categories.value === 'grey') {
-        var greyPig = new GreyPigModel_1.GreyPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-        pc.add(greyPig);
+    if (name.value.length == 0 ||
+        isNaN(Number(height.value)) ||
+        isNaN(Number(weight.value)) ||
+        personality.value.length == 0) {
+        alert('Your input is empty please fill the input');
     }
     else {
-        var chestnutPig = new ChestnutPigModel_1.ChestnutPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.value, personality.value);
-        pc.add(chestnutPig);
+        num++;
+        if (categories.value === 'black') {
+            var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
+            pc.add(blackPig);
+        }
+        else if (categories.value === 'white') {
+            var whitePig = new WhitePigModel_1.WhitePig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
+            pc.add(whitePig);
+        }
+        else if (categories.value === 'grey') {
+            var greyPig = new GreyPigModel_1.GreyPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
+            pc.add(greyPig);
+        }
+        else {
+            var chestnutPig = new ChestnutPigModel_1.ChestnutPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.value, personality.value);
+            pc.add(chestnutPig);
+        }
+        var newRow = table.insertRow(-1);
+        newRow.id = 'row' + num.toString();
+        // Insert a cell in the row at index 0
+        var newCell0 = newRow.insertCell(0);
+        var newCell1 = newRow.insertCell(1);
+        var newCell2_1 = newRow.insertCell(2);
+        var newCell3_1 = newRow.insertCell(3);
+        newCell0.innerHTML = name.value;
+        newCell1.innerHTML = categories.value;
+        newCell2_1.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+        newCell2_1.classList.add('moreInfo' + num.toString());
+        newCell3_1.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        newCell3_1.classList.add('delete' + num.toString());
+        newCell2_1.addEventListener('click', function () {
+            change(newCell2_1.className);
+        });
+        newCell3_1.addEventListener('click', function () {
+            deletedata(newCell3_1.className);
+        });
     }
-    var newRow = table.insertRow(-1);
-    newRow.id = 'row' + num.toString();
-    // Insert a cell in the row at index 0
-    var newCell0 = newRow.insertCell(0);
-    var newCell1 = newRow.insertCell(1);
-    var newCell2 = newRow.insertCell(2);
-    var newCell3 = newRow.insertCell(3);
-    newCell0.innerHTML = name.value;
-    newCell1.innerHTML = categories.value;
-    newCell2.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
-    newCell2.classList.add('moreInfo' + num.toString());
-    newCell3.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
-    newCell3.classList.add('delete' + num.toString());
-    newCell2.addEventListener('click', function () {
-        change(newCell2.className);
-    });
-    newCell3.addEventListener('click', function () {
-        deletedata(newCell3.className);
-    });
 });
 function deletedata(str) {
     var _a;
@@ -106,7 +114,7 @@ categories.addEventListener('change', function () {
     var options = document.querySelectorAll('#breed option');
     options.forEach(function (o) { return o.remove(); });
     if (categories.value === 'white') {
-        dynamic.type = 'number';
+        dynamic.type = 'range';
         dynamicLabel.textContent = 'Running';
         var option1 = document.createElement('option');
         option1.text = 'Chester';
@@ -119,7 +127,7 @@ categories.addEventListener('change', function () {
         breed.append(option3);
     }
     else if (categories.value === 'black') {
-        dynamic.type = 'number';
+        dynamic.type = 'range';
         dynamicLabel.textContent = 'Strength';
         var option1 = document.createElement('option');
         option1.text = 'Large';
@@ -132,7 +140,7 @@ categories.addEventListener('change', function () {
         breed.append(option3);
     }
     else if (categories.value === 'grey') {
-        dynamic.type = 'number';
+        dynamic.type = 'range';
         dynamicLabel.textContent = 'Swimming';
         var option1 = document.createElement('option');
         option1.text = 'Poland China';
