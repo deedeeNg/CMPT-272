@@ -61,11 +61,9 @@ function deletedata(str) {
     var i = Number(str.replace(/^\D+/g, ''));
     var confirmAction = confirm('Are you sure to delete this little cute pig UwU?');
     if (confirmAction) {
-        alert('Oink Oink UwU');
         (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
     }
     else {
-        alert('Arigato Master Uwu');
     }
 }
 function change(str) {
