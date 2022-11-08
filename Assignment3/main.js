@@ -67,8 +67,23 @@ function deletedata(str) {
     else {
     }
 }
+function comparePig(a, b) {
+    var nameA = a.name.toUpperCase();
+    var nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+        return -1;
+    }
+    else if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
+}
 function restartTable() {
     deleteAllrow();
+    blackPigCon.pig.sort(comparePig);
+    whitePigCon.pig.sort(comparePig);
+    greyPigCon.pig.sort(comparePig);
+    chestnutPigCon.pig.sort(comparePig);
     var num = -1;
     var _loop_1 = function (i) {
         num++;
@@ -147,36 +162,36 @@ function restartTable() {
         newCell3.addEventListener('click', function () {
             deletedata(newCell3.className);
         });
-        var _loop_4 = function (i_1) {
-            num++;
-            var newRow_1 = table.insertRow(-1);
-            newRow_1.id = 'row' + num.toString();
-            // Insert a cell in the row at index 0
-            var newCell0_1 = newRow_1.insertCell(0);
-            var newCell1_1 = newRow_1.insertCell(1);
-            var newCell2_1 = newRow_1.insertCell(2);
-            var newCell3_1 = newRow_1.insertCell(3);
-            newCell0_1.innerHTML = chestnutPigCon.get(i_1).name;
-            newCell1_1.innerHTML = 'Chestnut';
-            newCell2_1.innerHTML =
-                "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
-            newCell2_1.classList.add('moreInfo' + num.toString());
-            newCell3_1.innerHTML =
-                "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
-            newCell3_1.classList.add('delete' + num.toString());
-            newCell2_1.addEventListener('click', function () {
-                change(newCell2_1.className, 'Chestnut');
-            });
-            newCell3_1.addEventListener('click', function () {
-                deletedata(newCell3_1.className);
-            });
-        };
-        for (var i_1 = 0; i_1 < chestnutPigCon.pig.length; i_1++) {
-            _loop_4(i_1);
-        }
     };
     for (var i = 0; i < greyPigCon.pig.length; i++) {
         _loop_3(i);
+    }
+    var _loop_4 = function (i) {
+        num++;
+        var newRow = table.insertRow(-1);
+        newRow.id = 'row' + num.toString();
+        // Insert a cell in the row at index 0
+        var newCell0 = newRow.insertCell(0);
+        var newCell1 = newRow.insertCell(1);
+        var newCell2 = newRow.insertCell(2);
+        var newCell3 = newRow.insertCell(3);
+        newCell0.innerHTML = chestnutPigCon.get(i).name;
+        newCell1.innerHTML = 'Chestnut';
+        newCell2.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+        newCell2.classList.add('moreInfo' + num.toString());
+        newCell3.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        newCell3.classList.add('delete' + num.toString());
+        newCell2.addEventListener('click', function () {
+            change(newCell2.className, 'Chestnut');
+        });
+        newCell3.addEventListener('click', function () {
+            deletedata(newCell3.className);
+        });
+    };
+    for (var i = 0; i < chestnutPigCon.pig.length; i++) {
+        _loop_4(i);
     }
 }
 function change(str, categories) {

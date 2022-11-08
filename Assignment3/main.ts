@@ -2,6 +2,7 @@ import { BlackPigController } from './BlackPigController';
 import { WhitePigController } from './WhitePigController';
 import { GreyPigController } from './GreyPigController';
 import { ChestnutPigController } from './ChestnutPigController';
+import { Pig } from './PigModel';
 import { BlackPig } from './BlackPigModel';
 import { WhitePig } from './WhitePigModel';
 import { GreyPig } from './GreyPigModel';
@@ -102,8 +103,23 @@ function deletedata(str: String) {
   }
 }
 
+function comparePig(a: Pig, b: Pig) {
+  var nameA = a.name.toUpperCase();
+  var nameB = b.name.toUpperCase();
+  if (nameA < nameB) {
+    return -1;
+  } else if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
+}
+
 function restartTable() {
   deleteAllrow();
+  blackPigCon.pig.sort(comparePig);
+  whitePigCon.pig.sort(comparePig);
+  greyPigCon.pig.sort(comparePig);
+  chestnutPigCon.pig.sort(comparePig);
   var num = -1;
 
   for (let i = 0; i < blackPigCon.pig.length; i++) {
@@ -191,35 +207,35 @@ function restartTable() {
     newCell3.addEventListener('click', function () {
       deletedata(newCell3.className);
     });
+  }
 
-    for (let i = 0; i < chestnutPigCon.pig.length; i++) {
-      num++;
-      let newRow = table.insertRow(-1);
-      newRow.id = 'row' + num.toString();
+  for (let i = 0; i < chestnutPigCon.pig.length; i++) {
+    num++;
+    let newRow = table.insertRow(-1);
+    newRow.id = 'row' + num.toString();
 
-      // Insert a cell in the row at index 0
-      let newCell0 = newRow.insertCell(0);
-      let newCell1 = newRow.insertCell(1);
-      let newCell2 = newRow.insertCell(2);
-      let newCell3 = newRow.insertCell(3);
+    // Insert a cell in the row at index 0
+    let newCell0 = newRow.insertCell(0);
+    let newCell1 = newRow.insertCell(1);
+    let newCell2 = newRow.insertCell(2);
+    let newCell3 = newRow.insertCell(3);
 
-      newCell0.innerHTML = chestnutPigCon.get(i).name;
-      newCell1.innerHTML = 'Chestnut';
-      newCell2.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
-      newCell2.classList.add('moreInfo' + num.toString());
-      newCell3.innerHTML =
-        "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
-      newCell3.classList.add('delete' + num.toString());
+    newCell0.innerHTML = chestnutPigCon.get(i).name;
+    newCell1.innerHTML = 'Chestnut';
+    newCell2.innerHTML =
+      "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+    newCell2.classList.add('moreInfo' + num.toString());
+    newCell3.innerHTML =
+      "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+    newCell3.classList.add('delete' + num.toString());
 
-      newCell2.addEventListener('click', function () {
-        change(newCell2.className, 'Chestnut');
-      });
+    newCell2.addEventListener('click', function () {
+      change(newCell2.className, 'Chestnut');
+    });
 
-      newCell3.addEventListener('click', function () {
-        deletedata(newCell3.className);
-      });
-    }
+    newCell3.addEventListener('click', function () {
+      deletedata(newCell3.className);
+    });
   }
 }
 
