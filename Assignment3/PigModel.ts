@@ -8,10 +8,6 @@ export enum categoriesEnum {
 export class Pig {
   static num = 0;
   category?: categoriesEnum;
-  swimming?: number;
-  running?: number;
-  language?: string;
-  strength?: number;
   name: string;
   breed: string;
   height: number;

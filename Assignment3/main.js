@@ -1,11 +1,17 @@
 "use strict";
 exports.__esModule = true;
-var PigController_1 = require("./PigController");
+var BlackPigController_1 = require("./BlackPigController");
+var WhitePigController_1 = require("./WhitePigController");
+var GreyPigController_1 = require("./GreyPigController");
+var ChestnutPigController_1 = require("./ChestnutPigController");
 var BlackPigModel_1 = require("./BlackPigModel");
 var WhitePigModel_1 = require("./WhitePigModel");
 var GreyPigModel_1 = require("./GreyPigModel");
 var ChestnutPigModel_1 = require("./ChestnutPigModel");
-var pc = new PigController_1.PigController();
+var blackPigCon = new BlackPigController_1.BlackPigController();
+var whitePigCon = new WhitePigController_1.WhitePigController();
+var greyPigCon = new GreyPigController_1.GreyPigController();
+var chestnutPigCon = new ChestnutPigController_1.ChestnutPigController();
 var name = document.getElementById('name');
 var breed = document.getElementById('breed');
 var height = document.getElementById('height');
@@ -14,8 +20,10 @@ var personality = document.getElementById('personality');
 var dynamic = document.getElementById('dynamic');
 var categories = document.getElementById('category');
 var dynamicLabel = document.getElementById('dynamic-label');
-var num = -1;
 var table = document.getElementById('table1');
+document.getElementById('testBtn').addEventListener('click', function () {
+    deleteAllrow();
+});
 document.getElementById('add').addEventListener('click', function () {
     if (name.value.length == 0 ||
         isNaN(Number(height.value)) ||
@@ -24,46 +32,31 @@ document.getElementById('add').addEventListener('click', function () {
         alert('Your input is empty please fill the input');
     }
     else {
-        num++;
         if (categories.value === 'black') {
             var blackPig = new BlackPigModel_1.BlackPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-            pc.add(blackPig);
+            blackPigCon.add(blackPig);
         }
         else if (categories.value === 'white') {
             var whitePig = new WhitePigModel_1.WhitePig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-            pc.add(whitePig);
+            whitePigCon.add(whitePig);
         }
         else if (categories.value === 'grey') {
             var greyPig = new GreyPigModel_1.GreyPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.valueAsNumber, personality.value);
-            pc.add(greyPig);
+            greyPigCon.add(greyPig);
         }
         else {
             var chestnutPig = new ChestnutPigModel_1.ChestnutPig(name.value, breed.value, height.valueAsNumber, weight.valueAsNumber, dynamic.value, personality.value);
-            pc.add(chestnutPig);
+            chestnutPigCon.add(chestnutPig);
         }
-        var newRow = table.insertRow(-1);
-        newRow.id = 'row' + num.toString();
-        // Insert a cell in the row at index 0
-        var newCell0 = newRow.insertCell(0);
-        var newCell1 = newRow.insertCell(1);
-        var newCell2_1 = newRow.insertCell(2);
-        var newCell3_1 = newRow.insertCell(3);
-        newCell0.innerHTML = name.value;
-        newCell1.innerHTML = categories.value;
-        newCell2_1.innerHTML =
-            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
-        newCell2_1.classList.add('moreInfo' + num.toString());
-        newCell3_1.innerHTML =
-            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
-        newCell3_1.classList.add('delete' + num.toString());
-        newCell2_1.addEventListener('click', function () {
-            change(newCell2_1.className);
-        });
-        newCell3_1.addEventListener('click', function () {
-            deletedata(newCell3_1.className);
-        });
+        restartTable();
     }
 });
+function deleteAllrow() {
+    var length = table.rows.length;
+    for (var i = 1; i < length; i++) {
+        table.deleteRow(1);
+    }
+}
 function deletedata(str) {
     var _a;
     var i = Number(str.replace(/^\D+/g, ''));
@@ -74,40 +67,161 @@ function deletedata(str) {
     else {
     }
 }
-function change(str) {
+function restartTable() {
+    deleteAllrow();
+    var num = -1;
+    var _loop_1 = function (i) {
+        num++;
+        var newRow = table.insertRow(-1);
+        newRow.id = 'row' + num.toString();
+        // Insert a cell in the row at index 0
+        var newCell0 = newRow.insertCell(0);
+        var newCell1 = newRow.insertCell(1);
+        var newCell2 = newRow.insertCell(2);
+        var newCell3 = newRow.insertCell(3);
+        newCell0.innerHTML = blackPigCon.get(i).name;
+        newCell1.innerHTML = 'Black';
+        newCell2.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+        newCell2.classList.add('moreInfo' + num.toString());
+        newCell3.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        newCell3.classList.add('delete' + num.toString());
+        newCell2.addEventListener('click', function () {
+            change(newCell2.className, 'Black');
+        });
+        newCell3.addEventListener('click', function () {
+            deletedata(newCell3.className);
+        });
+    };
+    for (var i = 0; i < blackPigCon.pig.length; i++) {
+        _loop_1(i);
+    }
+    var _loop_2 = function (i) {
+        num++;
+        var newRow = table.insertRow(-1);
+        newRow.id = 'row' + num.toString();
+        // Insert a cell in the row at index 0
+        var newCell0 = newRow.insertCell(0);
+        var newCell1 = newRow.insertCell(1);
+        var newCell2 = newRow.insertCell(2);
+        var newCell3 = newRow.insertCell(3);
+        newCell0.innerHTML = whitePigCon.get(i).name;
+        newCell1.innerHTML = 'White';
+        newCell2.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+        newCell2.classList.add('moreInfo' + num.toString());
+        newCell3.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        newCell3.classList.add('delete' + num.toString());
+        newCell2.addEventListener('click', function () {
+            change(newCell2.className, 'White');
+        });
+        newCell3.addEventListener('click', function () {
+            deletedata(newCell3.className);
+        });
+    };
+    for (var i = 0; i < whitePigCon.pig.length; i++) {
+        _loop_2(i);
+    }
+    var _loop_3 = function (i) {
+        num++;
+        var newRow = table.insertRow(-1);
+        newRow.id = 'row' + num.toString();
+        // Insert a cell in the row at index 0
+        var newCell0 = newRow.insertCell(0);
+        var newCell1 = newRow.insertCell(1);
+        var newCell2 = newRow.insertCell(2);
+        var newCell3 = newRow.insertCell(3);
+        newCell0.innerHTML = greyPigCon.get(i).name;
+        newCell1.innerHTML = 'Grey';
+        newCell2.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+        newCell2.classList.add('moreInfo' + num.toString());
+        newCell3.innerHTML =
+            "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+        newCell3.classList.add('delete' + num.toString());
+        newCell2.addEventListener('click', function () {
+            change(newCell2.className, 'Grey');
+        });
+        newCell3.addEventListener('click', function () {
+            deletedata(newCell3.className);
+        });
+        var _loop_4 = function (i_1) {
+            num++;
+            var newRow_1 = table.insertRow(-1);
+            newRow_1.id = 'row' + num.toString();
+            // Insert a cell in the row at index 0
+            var newCell0_1 = newRow_1.insertCell(0);
+            var newCell1_1 = newRow_1.insertCell(1);
+            var newCell2_1 = newRow_1.insertCell(2);
+            var newCell3_1 = newRow_1.insertCell(3);
+            newCell0_1.innerHTML = chestnutPigCon.get(i_1).name;
+            newCell1_1.innerHTML = 'Chestnut';
+            newCell2_1.innerHTML =
+                "<span style='text-decoration: underline; color: blue; cursor: pointer;'>More Info</span>";
+            newCell2_1.classList.add('moreInfo' + num.toString());
+            newCell3_1.innerHTML =
+                "<span style='text-decoration: underline; color: blue; cursor: pointer;'>Delete</span>";
+            newCell3_1.classList.add('delete' + num.toString());
+            newCell2_1.addEventListener('click', function () {
+                change(newCell2_1.className, 'Chestnut');
+            });
+            newCell3_1.addEventListener('click', function () {
+                deletedata(newCell3_1.className);
+            });
+        };
+        for (var i_1 = 0; i_1 < chestnutPigCon.pig.length; i_1++) {
+            _loop_4(i_1);
+        }
+    };
+    for (var i = 0; i < greyPigCon.pig.length; i++) {
+        _loop_3(i);
+    }
+}
+function change(str, categories) {
     var i = Number(str.replace(/^\D+/g, ''));
-    console.log(i);
     var moreInfoData = document.getElementsByClassName('more-info-data');
     var moreInfoDynamic = document.getElementsByClassName('more-info-dynamic');
-    var Name = pc.get(i).name;
-    var Breed = pc.get(i).breed;
-    var Height = pc.get(i).height.toString() + ' Hocks';
-    var Weight = pc.get(i).weight.toString() + ' Stones';
-    var Personality = pc.get(i).personality;
-    moreInfoData[0].innerHTML = Name;
-    moreInfoData[1].innerHTML = Breed;
-    moreInfoData[2].innerHTML = Height + ' Hocks';
-    moreInfoData[3].innerHTML = Weight + ' Stones';
-    moreInfoData[5].innerHTML = Personality;
-    if (pc.get(i).category == 0) {
-        var Swimming = pc.get(i).swimming.toString();
-        moreInfoData[4].innerHTML = Swimming;
-        moreInfoDynamic[0].innerHTML = 'Swimming';
+    if (categories === 'Black') {
+        var blackPig = blackPigCon.get(i);
+        moreInfoData[0].innerHTML = blackPig.name;
+        moreInfoData[1].innerHTML = blackPig.breed;
+        moreInfoData[2].innerHTML = blackPig.height + ' Hocks';
+        moreInfoData[3].innerHTML = blackPig.weight + ' Stones';
+        moreInfoData[5].innerHTML = blackPig.personality;
+        moreInfoData[4].innerHTML = blackPig.strength.toString();
+        moreInfoDynamic[0].innerHTML = 'Strength';
     }
-    else if (pc.get(i).category == 1) {
-        var Language = pc.get(i).language;
-        moreInfoData[4].innerHTML = Language;
-        moreInfoDynamic[0].innerHTML = 'Language';
-    }
-    else if (pc.get(i).category == 2) {
-        var Running = pc.get(i).running.toString();
-        moreInfoData[4].innerHTML = Running;
+    if (categories === 'White') {
+        var whitePig = whitePigCon.get(i);
+        moreInfoData[0].innerHTML = whitePig.name;
+        moreInfoData[1].innerHTML = whitePig.breed;
+        moreInfoData[2].innerHTML = whitePig.height + ' Hocks';
+        moreInfoData[3].innerHTML = whitePig.weight + ' Stones';
+        moreInfoData[5].innerHTML = whitePig.personality;
+        moreInfoData[4].innerHTML = whitePig.running.toString();
         moreInfoDynamic[0].innerHTML = 'Running';
     }
-    else {
-        var Strength = pc.get(i).strength.toString();
-        moreInfoData[4].innerHTML = Strength;
-        moreInfoDynamic[0].innerHTML = 'Strength';
+    if (categories === 'Grey') {
+        var greyPig = greyPigCon.get(i);
+        moreInfoData[0].innerHTML = greyPig.name;
+        moreInfoData[1].innerHTML = greyPig.breed;
+        moreInfoData[2].innerHTML = greyPig.height + ' Hocks';
+        moreInfoData[3].innerHTML = greyPig.weight + ' Stones';
+        moreInfoData[5].innerHTML = greyPig.personality;
+        moreInfoData[4].innerHTML = greyPig.swimming.toString();
+        moreInfoDynamic[0].innerHTML = 'Swimming';
+    }
+    if (categories === 'Chestnut') {
+        var chestnutPig = chestnutPigCon.get(i);
+        moreInfoData[0].innerHTML = chestnutPig.name;
+        moreInfoData[1].innerHTML = chestnutPig.breed;
+        moreInfoData[2].innerHTML = chestnutPig.height + ' Hocks';
+        moreInfoData[3].innerHTML = chestnutPig.weight + ' Stones';
+        moreInfoData[5].innerHTML = chestnutPig.personality;
+        moreInfoData[4].innerHTML = chestnutPig.language;
+        moreInfoDynamic[0].innerHTML = 'Language';
     }
 }
 categories.addEventListener('change', function () {
