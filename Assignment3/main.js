@@ -57,12 +57,28 @@ function deleteAllrow() {
         table.deleteRow(1);
     }
 }
-function deletedata(str) {
+function deletedata(str, category) {
     var _a;
     var i = Number(str.replace(/^\D+/g, ''));
     var confirmAction = confirm('Are you sure to delete this little cute pig UwU?');
     if (confirmAction) {
         (_a = document.getElementById('row' + i.toString())) === null || _a === void 0 ? void 0 : _a.remove();
+        if (category === 'Black') {
+            blackPigCon.remove(i);
+        }
+        else if (category === 'White') {
+            whitePigCon.remove(i - blackPigCon.pig.length);
+        }
+        else if (category === 'Grey') {
+            greyPigCon.remove(i - blackPigCon.pig.length - whitePigCon.pig.length);
+        }
+        else {
+            chestnutPigCon.remove(i -
+                blackPigCon.pig.length -
+                whitePigCon.pig.length -
+                greyPigCon.pig.length);
+        }
+        restartTable();
     }
     else {
     }
@@ -106,7 +122,7 @@ function restartTable() {
             change(newCell2.className, 'Black');
         });
         newCell3.addEventListener('click', function () {
-            deletedata(newCell3.className);
+            deletedata(newCell3.className, 'Black');
         });
     };
     for (var i = 0; i < blackPigCon.pig.length; i++) {
@@ -133,7 +149,7 @@ function restartTable() {
             change(newCell2.className, 'White');
         });
         newCell3.addEventListener('click', function () {
-            deletedata(newCell3.className);
+            deletedata(newCell3.className, 'White');
         });
     };
     for (var i = 0; i < whitePigCon.pig.length; i++) {
@@ -160,7 +176,7 @@ function restartTable() {
             change(newCell2.className, 'Grey');
         });
         newCell3.addEventListener('click', function () {
-            deletedata(newCell3.className);
+            deletedata(newCell3.className, 'Grey');
         });
     };
     for (var i = 0; i < greyPigCon.pig.length; i++) {
@@ -187,7 +203,7 @@ function restartTable() {
             change(newCell2.className, 'Chestnut');
         });
         newCell3.addEventListener('click', function () {
-            deletedata(newCell3.className);
+            deletedata(newCell3.className, 'Chestnut');
         });
     };
     for (var i = 0; i < chestnutPigCon.pig.length; i++) {
@@ -209,7 +225,7 @@ function change(str, categories) {
         moreInfoDynamic[0].innerHTML = 'Strength';
     }
     if (categories === 'White') {
-        var whitePig = whitePigCon.get(i);
+        var whitePig = whitePigCon.get(i - blackPigCon.pig.length);
         moreInfoData[0].innerHTML = whitePig.name;
         moreInfoData[1].innerHTML = whitePig.breed;
         moreInfoData[2].innerHTML = whitePig.height + ' Hocks';
@@ -219,7 +235,7 @@ function change(str, categories) {
         moreInfoDynamic[0].innerHTML = 'Running';
     }
     if (categories === 'Grey') {
-        var greyPig = greyPigCon.get(i);
+        var greyPig = greyPigCon.get(i - blackPigCon.pig.length - whitePigCon.pig.length);
         moreInfoData[0].innerHTML = greyPig.name;
         moreInfoData[1].innerHTML = greyPig.breed;
         moreInfoData[2].innerHTML = greyPig.height + ' Hocks';
@@ -229,7 +245,10 @@ function change(str, categories) {
         moreInfoDynamic[0].innerHTML = 'Swimming';
     }
     if (categories === 'Chestnut') {
-        var chestnutPig = chestnutPigCon.get(i);
+        var chestnutPig = chestnutPigCon.get(i -
+            blackPigCon.pig.length -
+            whitePigCon.pig.length -
+            greyPigCon.pig.length);
         moreInfoData[0].innerHTML = chestnutPig.name;
         moreInfoData[1].innerHTML = chestnutPig.breed;
         moreInfoData[2].innerHTML = chestnutPig.height + ' Hocks';

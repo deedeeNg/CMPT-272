@@ -16,11 +16,11 @@ export class WhitePigController implements WhitePigControllerInterface {
 
   add(p: WhitePig): void {
     this.pig.push(p);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.WhitepigArray = JSON.stringify(this.pig);
   }
 
   getAll(): WhitePig[] {
-    return JSON.parse(localStorage.pigArray);
+    return JSON.parse(localStorage.WhitepigArray);
   }
 
   get(index: number): WhitePig {
@@ -29,6 +29,6 @@ export class WhitePigController implements WhitePigControllerInterface {
 
   remove(index: number): void {
     this.pig.splice(index, 1);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.WhitepigArray = JSON.stringify(this.pig);
   }
 }

@@ -16,11 +16,11 @@ export class BlackPigController implements BlackPigControllerInterface {
 
   add(p: BlackPig): void {
     this.pig.push(p);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.BlackPigArray = JSON.stringify(this.pig);
   }
 
   getAll(): BlackPig[] {
-    return JSON.parse(localStorage.pigArray);
+    return JSON.parse(localStorage.BlackpigArray);
   }
 
   get(index: number): BlackPig {
@@ -29,6 +29,6 @@ export class BlackPigController implements BlackPigControllerInterface {
 
   remove(index: number): void {
     this.pig.splice(index, 1);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.BlackPigArray = JSON.stringify(this.pig);
   }
 }

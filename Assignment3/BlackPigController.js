@@ -7,17 +7,17 @@ var BlackPigController = /** @class */ (function () {
     }
     BlackPigController.prototype.add = function (p) {
         this.pig.push(p);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.BlackPigArray = JSON.stringify(this.pig);
     };
     BlackPigController.prototype.getAll = function () {
-        return JSON.parse(localStorage.pigArray);
+        return JSON.parse(localStorage.BlackpigArray);
     };
     BlackPigController.prototype.get = function (index) {
         return this.pig[index];
     };
     BlackPigController.prototype.remove = function (index) {
         this.pig.splice(index, 1);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.BlackPigArray = JSON.stringify(this.pig);
     };
     return BlackPigController;
 }());

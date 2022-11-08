@@ -92,13 +92,28 @@ function deleteAllrow() {
   }
 }
 
-function deletedata(str: String) {
+function deletedata(str: String, category: String) {
   let i = Number(str.replace(/^\D+/g, ''));
   let confirmAction = confirm(
     'Are you sure to delete this little cute pig UwU?'
   );
   if (confirmAction) {
     document.getElementById('row' + i.toString())?.remove();
+    if (category === 'Black') {
+      blackPigCon.remove(i);
+    } else if (category === 'White') {
+      whitePigCon.remove(i - blackPigCon.pig.length);
+    } else if (category === 'Grey') {
+      greyPigCon.remove(i - blackPigCon.pig.length - whitePigCon.pig.length);
+    } else {
+      chestnutPigCon.remove(
+        i -
+          blackPigCon.pig.length -
+          whitePigCon.pig.length -
+          greyPigCon.pig.length
+      );
+    }
+    restartTable();
   } else {
   }
 }
@@ -147,7 +162,7 @@ function restartTable() {
     });
 
     newCell3.addEventListener('click', function () {
-      deletedata(newCell3.className);
+      deletedata(newCell3.className, 'Black');
     });
   }
 
@@ -176,7 +191,7 @@ function restartTable() {
     });
 
     newCell3.addEventListener('click', function () {
-      deletedata(newCell3.className);
+      deletedata(newCell3.className, 'White');
     });
   }
 
@@ -205,7 +220,7 @@ function restartTable() {
     });
 
     newCell3.addEventListener('click', function () {
-      deletedata(newCell3.className);
+      deletedata(newCell3.className, 'Grey');
     });
   }
 
@@ -234,7 +249,7 @@ function restartTable() {
     });
 
     newCell3.addEventListener('click', function () {
-      deletedata(newCell3.className);
+      deletedata(newCell3.className, 'Chestnut');
     });
   }
 }
@@ -259,7 +274,7 @@ function change(str: String, categories: String) {
   }
 
   if (categories === 'White') {
-    var whitePig = whitePigCon.get(i);
+    var whitePig = whitePigCon.get(i - blackPigCon.pig.length);
 
     moreInfoData[0].innerHTML = whitePig.name;
     moreInfoData[1].innerHTML = whitePig.breed;
@@ -272,7 +287,9 @@ function change(str: String, categories: String) {
   }
 
   if (categories === 'Grey') {
-    var greyPig = greyPigCon.get(i);
+    var greyPig = greyPigCon.get(
+      i - blackPigCon.pig.length - whitePigCon.pig.length
+    );
 
     moreInfoData[0].innerHTML = greyPig.name;
     moreInfoData[1].innerHTML = greyPig.breed;
@@ -285,7 +302,12 @@ function change(str: String, categories: String) {
   }
 
   if (categories === 'Chestnut') {
-    var chestnutPig = chestnutPigCon.get(i);
+    var chestnutPig = chestnutPigCon.get(
+      i -
+        blackPigCon.pig.length -
+        whitePigCon.pig.length -
+        greyPigCon.pig.length
+    );
 
     moreInfoData[0].innerHTML = chestnutPig.name;
     moreInfoData[1].innerHTML = chestnutPig.breed;

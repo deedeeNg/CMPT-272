@@ -7,17 +7,17 @@ var GreyPigController = /** @class */ (function () {
     }
     GreyPigController.prototype.add = function (p) {
         this.pig.push(p);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.GreypigArray = JSON.stringify(this.pig);
     };
     GreyPigController.prototype.getAll = function () {
-        return JSON.parse(localStorage.pigArray);
+        return JSON.parse(localStorage.GreypigArray);
     };
     GreyPigController.prototype.get = function (index) {
         return this.pig[index];
     };
     GreyPigController.prototype.remove = function (index) {
         this.pig.splice(index, 1);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.GreypigArray = JSON.stringify(this.pig);
     };
     return GreyPigController;
 }());

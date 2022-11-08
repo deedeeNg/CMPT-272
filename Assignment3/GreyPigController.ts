@@ -16,11 +16,11 @@ export class GreyPigController implements GreyPigControllerInterface {
 
   add(p: GreyPig): void {
     this.pig.push(p);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.GreypigArray = JSON.stringify(this.pig);
   }
 
   getAll(): GreyPig[] {
-    return JSON.parse(localStorage.pigArray);
+    return JSON.parse(localStorage.GreypigArray);
   }
 
   get(index: number): GreyPig {
@@ -29,6 +29,6 @@ export class GreyPigController implements GreyPigControllerInterface {
 
   remove(index: number): void {
     this.pig.splice(index, 1);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.GreypigArray = JSON.stringify(this.pig);
   }
 }

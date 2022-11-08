@@ -16,11 +16,11 @@ export class ChestnutPigController implements ChestnutPigControllerInterface {
 
   add(p: ChestnutPig): void {
     this.pig.push(p);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.ChestnutpigArray = JSON.stringify(this.pig);
   }
 
   getAll(): ChestnutPig[] {
-    return JSON.parse(localStorage.pigArray);
+    return JSON.parse(localStorage.ChestnutpigArray);
   }
 
   get(index: number): ChestnutPig {
@@ -29,6 +29,6 @@ export class ChestnutPigController implements ChestnutPigControllerInterface {
 
   remove(index: number): void {
     this.pig.splice(index, 1);
-    localStorage.pigArray = JSON.stringify(this.pig);
+    localStorage.ChestnutpigArray = JSON.stringify(this.pig);
   }
 }

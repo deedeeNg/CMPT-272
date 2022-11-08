@@ -7,17 +7,17 @@ var WhitePigController = /** @class */ (function () {
     }
     WhitePigController.prototype.add = function (p) {
         this.pig.push(p);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.WhitepigArray = JSON.stringify(this.pig);
     };
     WhitePigController.prototype.getAll = function () {
-        return JSON.parse(localStorage.pigArray);
+        return JSON.parse(localStorage.WhitepigArray);
     };
     WhitePigController.prototype.get = function (index) {
         return this.pig[index];
     };
     WhitePigController.prototype.remove = function (index) {
         this.pig.splice(index, 1);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.WhitepigArray = JSON.stringify(this.pig);
     };
     return WhitePigController;
 }());

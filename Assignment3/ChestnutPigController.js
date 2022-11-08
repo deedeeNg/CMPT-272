@@ -7,17 +7,17 @@ var ChestnutPigController = /** @class */ (function () {
     }
     ChestnutPigController.prototype.add = function (p) {
         this.pig.push(p);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.ChestnutpigArray = JSON.stringify(this.pig);
     };
     ChestnutPigController.prototype.getAll = function () {
-        return JSON.parse(localStorage.pigArray);
+        return JSON.parse(localStorage.ChestnutpigArray);
     };
     ChestnutPigController.prototype.get = function (index) {
         return this.pig[index];
     };
     ChestnutPigController.prototype.remove = function (index) {
         this.pig.splice(index, 1);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        localStorage.ChestnutpigArray = JSON.stringify(this.pig);
     };
     return ChestnutPigController;
 }());
