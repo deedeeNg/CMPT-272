@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Reported By</th>
+    <th>Time Reported</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr
+    appColors
+    [ngClass]="{ 'instructor-style': report.instructor }"
+    *ngFor="let r of report"
+  >
+    <td>{{ r.location }}</td>
+    <td>{{ r.name }}</td>
+    <td>{{ r.time_reported | date: "yyyy-MM-dd (h:mm a)" }}</td>
+    <td>
+      <span *ngIf="r.status; then ins; else notins"></span>
+      <ng-template #ins>RETRIVED</ng-template>
+      <ng-template #notins>READY FOR PICKUP</ng-template>
+    </td>
+
+    <td>
+      <button class="btn btn-outline-primary">MORE INFO</button>
+    </td>
+
+    <td>
+      <button class="btn btn-outline-danger" id="delete">DELETE</button>
+    </td>
+  </tr>
+</table>
