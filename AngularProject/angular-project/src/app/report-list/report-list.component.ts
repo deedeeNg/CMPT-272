@@ -17,7 +17,36 @@ export class ReportListComponent implements OnInit {
         time_reported: new Date().getTime(),
         status: true,
       },
+      {
+        location: 'haha',
+        name: 'deedee',
+        time_reported: new Date().getTime(),
+        status: true,
+      },
+      {
+        location: 'haha',
+        name: 'deedee',
+        time_reported: new Date().getTime(),
+        status: true,
+      },
+      {
+        location: 'haha',
+        name: 'deedee',
+        time_reported: new Date().getTime(),
+        status: true,
+      },
+      {
+        location: 'haha',
+        name: 'deedee',
+        time_reported: new Date().getTime(),
+        status: true,
+      },
     ];
+  }
+
+  add(report: any) {
+    report.time_reported = new Date().getTime();
+    this.report.push(report);
   }
 
   ngOnInit(): void {}
