@@ -12,19 +12,9 @@ export class ReportComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  getInstr() {
-    return true;
-  }
-
-  onDelete(evt: any, ind: string) {
-    console.log(evt);
-    console.log(ind);
+  onDelete(evt: any, ind: number) {
     evt['ind'] = ind;
     this.delete.emit(evt);
-  }
-
-  onEdit(evt: any, ind: string) {
-    this.router.navigate(['/edit', ind]);
   }
 
   ngOnInit(): void {}

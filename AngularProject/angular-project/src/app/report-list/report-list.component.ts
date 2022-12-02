@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-report-list',
@@ -6,48 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-list.component.css'],
 })
 export class ReportListComponent implements OnInit {
-  report: any[];
+  report: any[] = [];
   query: string = '';
 
-  constructor() {
-    this.report = [
-      {
-        location: 'haha',
-        name: 'deedee',
-        time_reported: new Date().getTime(),
-        status: true,
-      },
-      {
-        location: 'haha',
-        name: 'deedee',
-        time_reported: new Date().getTime(),
-        status: true,
-      },
-      {
-        location: 'haha',
-        name: 'deedee',
-        time_reported: new Date().getTime(),
-        status: true,
-      },
-      {
-        location: 'haha',
-        name: 'deedee',
-        time_reported: new Date().getTime(),
-        status: true,
-      },
-      {
-        location: 'haha',
-        name: 'deedee',
-        time_reported: new Date().getTime(),
-        status: true,
-      },
-    ];
+  constructor(private rs: ReportService) {}
+
+  onReportDelete(evt: any) {
+    const del_report = evt['ind'];
+
+    console.log('haha');
+
+    this.report = this.rs.delete(del_report);
   }
 
-  add(report: any) {
-    report.time_reported = new Date().getTime();
-    this.report.push(report);
+  ngOnInit(): void {
+    this.report = this.rs.get();
   }
-
-  ngOnInit(): void {}
 }

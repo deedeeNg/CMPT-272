@@ -14,7 +14,7 @@
   >
     <td>{{ r.location }}</td>
     <td>{{ r.name }}</td>
-    <td>{{ r.time_reported | date: "yyyy-MM-dd (h:mm a)" }}</td>
+    <td>{{ r.time_reported | date : "yyyy-MM-dd (h:mm a)" }}</td>
     <td>
       <span *ngIf="r.status; then ins; else notins"></span>
       <ng-template #ins>RETRIVED</ng-template>
@@ -26,7 +26,13 @@
     </td>
 
     <td>
-      <button class="btn btn-outline-danger" id="delete">DELETE</button>
+      <button
+        class="btn btn-outline-danger"
+        id="delete"
+        (click)="onDelete($event, r.id)"
+      >
+        DELETE
+      </button>
     </td>
   </tr>
 </table>
