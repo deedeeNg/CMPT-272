@@ -32,6 +32,26 @@ export class ReportAddComponent implements OnInit {
         this.forbiddenNamesValidator,
       ]),
       status: new FormControl(false),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        this.forbiddenNamesValidator,
+      ]),
+      breed: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        this.forbiddenNamesValidator,
+      ]),
+      pid: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        this.forbiddenNamesValidator,
+      ]),
+      extra: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        this.forbiddenNamesValidator,
+      ]),
     };
 
     this.form = new FormGroup(formControls);

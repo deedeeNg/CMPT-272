@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ReportService {
-  countID = 5;
+  countID = 6;
   report = [
     {
       location: 'haha',
@@ -49,13 +49,14 @@ export class ReportService {
   }
 
   add(r: any) {
-    r.added_on = new Date().getTime();
-    r.id = this.countID;
-    this.countID++;
+    r.time_reported = new Date().getTime();
+    r.id = this.countID++;
     this.report.push(r);
+    console.log(this.report);
   }
 
   delete(del_report: number) {
+    console.log(del_report);
     this.report = this.report.filter((r) => r.id !== del_report);
     return this.report;
   }

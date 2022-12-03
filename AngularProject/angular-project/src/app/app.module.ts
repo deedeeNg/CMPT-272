@@ -7,6 +7,9 @@ import { ReportListComponent } from './report-list/report-list.component';
 import { ReportComponent } from './report/report.component';
 import { ReportAddComponent } from './report-add/report-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReportMoreInfoComponent } from './report-more-info/report-more-info.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +17,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReportListComponent,
     ReportComponent,
     ReportAddComponent,
+    ReportMoreInfoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

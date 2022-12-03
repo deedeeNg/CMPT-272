@@ -15,8 +15,6 @@ export class ReportListComponent implements OnInit {
   onReportDelete(evt: any) {
     const del_report = evt['ind'];
 
-    console.log('haha');
-
     this.report = this.rs.delete(del_report);
   }
 
