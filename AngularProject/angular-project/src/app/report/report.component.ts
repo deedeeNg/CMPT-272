@@ -31,5 +31,11 @@ export class ReportComponent implements OnInit {
       data: more_info_report,
     });
   }
+
+  retrive(evt: any, ind: number) {
+    const data = this.rs.getID(ind);
+
+    data.status = true;
+  }
   ngOnInit(): void {}
 }

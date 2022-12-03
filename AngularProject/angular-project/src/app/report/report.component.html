@@ -39,5 +39,10 @@
         DELETE
       </button>
     </td>
+    <td>
+      <button *ngIf="!r.status" (click)="retrive($event, r.id)">
+        RETRIVED
+      </button>
+    </td>
   </tr>
 </table>
