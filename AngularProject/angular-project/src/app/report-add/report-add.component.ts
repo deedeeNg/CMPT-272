@@ -29,28 +29,26 @@ export class ReportAddComponent implements OnInit {
       location: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        this.forbiddenNamesValidator,
       ]),
       status: new FormControl(false),
       phone: new FormControl('', [
         Validators.required,
-        Validators.minLength(4),
-        this.forbiddenNamesValidator,
+        Validators.pattern('^[0-9]*$'),
+        Validators.minLength(10),
+        Validators.maxLength(10),
       ]),
       breed: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        this.forbiddenNamesValidator,
       ]),
       pid: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        this.forbiddenNamesValidator,
+        Validators.pattern('^[0-9]*$'),
       ]),
       extra: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        this.forbiddenNamesValidator,
       ]),
     };
 

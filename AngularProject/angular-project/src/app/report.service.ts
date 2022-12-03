@@ -8,35 +8,35 @@ export class ReportService {
   report = [
     {
       location: 'haha',
-      name: 'deedee',
+      name: 'deedee1',
       time_reported: new Date().getTime(),
       status: true,
       id: 1,
     },
     {
       location: 'haha',
-      name: 'deedee',
+      name: 'deedee2',
       time_reported: new Date().getTime(),
       status: true,
       id: 2,
     },
     {
       location: 'haha',
-      name: 'deedee',
+      name: 'deedee3',
       time_reported: new Date().getTime(),
       status: true,
       id: 3,
     },
     {
       location: 'haha',
-      name: 'deedee',
+      name: 'deedee4',
       time_reported: new Date().getTime(),
       status: true,
       id: 4,
     },
     {
       location: 'haha',
-      name: 'deedee',
+      name: 'deedee5',
       time_reported: new Date().getTime(),
       status: true,
       id: 5,
@@ -48,6 +48,14 @@ export class ReportService {
     return this.report;
   }
 
+  getID(id: number) {
+    const index = this.report.findIndex((r) => {
+      return r.id === id;
+    });
+
+    return this.report[index];
+  }
+
   add(r: any) {
     r.time_reported = new Date().getTime();
     r.id = this.countID++;
@@ -56,7 +64,6 @@ export class ReportService {
   }
 
   delete(del_report: number) {
-    console.log(del_report);
     this.report = this.report.filter((r) => r.id !== del_report);
     return this.report;
   }

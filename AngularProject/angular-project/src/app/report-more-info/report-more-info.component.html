@@ -1,1 +1,40 @@
 <h2>More Info</h2>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>{{ name }}</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>{{ location }}</td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td>
+      <span *ngIf="status; then ins; else notins"></span>
+      <ng-template #ins>RETRIVED</ng-template>
+      <ng-template #notins>READY FOR PICKUP</ng-template>
+    </td>
+  </tr>
+  <tr>
+    <td>Time Reported</td>
+    <td>{{ time_reported | date : "yyyy-MM-dd (h:mm a)" }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ phone }}</td>
+  </tr>
+  <tr>
+    <td>Breed</td>
+    <td>{{ breed }}</td>
+  </tr>
+  <tr>
+    <td>PID</td>
+    <td>{{ pid }}</td>
+  </tr>
+  <tr>
+    <td>Extra</td>
+    <td>{{ extra }}</td>
+  </tr>
+</table>

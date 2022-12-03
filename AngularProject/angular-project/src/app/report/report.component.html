@@ -22,7 +22,10 @@
     </td>
 
     <td>
-      <button class="btn btn-outline-primary" (click)="openDialog()">
+      <button
+        class="btn btn-outline-primary"
+        (click)="openDialog($event, r.id)"
+      >
         MORE INFO
       </button>
     </td>
