@@ -37,5 +37,23 @@ export class ReportComponent implements OnInit {
 
     data.status = true;
   }
+
+  sortLocation() {
+    this.rs.get().sort((a, b) => {
+      return ('' + a.location).localeCompare(b.location);
+    });
+  }
+
+  sortName() {
+    this.rs.get().sort((a, b) => {
+      return ('' + a.name).localeCompare(b.name);
+    });
+  }
+
+  sortDate() {
+    this.rs.get().sort((a, b) => {
+      return b.time_reported - a.time_reported;
+    });
+  }
   ngOnInit(): void {}
 }
