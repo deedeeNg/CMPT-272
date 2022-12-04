@@ -20,8 +20,13 @@ export class ReportComponent implements OnInit {
   ) {}
 
   onDelete(evt: any, ind: number) {
-    evt['ind'] = ind;
-    this.delete.emit(evt);
+    let password = prompt('Please enter the password:');
+    if (password === 'OINK!!') {
+      evt['ind'] = ind;
+      this.delete.emit(evt);
+    } else {
+      alert('Wrong password');
+    }
   }
 
   openDialog(evt: any, ind: number) {
@@ -35,7 +40,12 @@ export class ReportComponent implements OnInit {
   retrive(evt: any, ind: number) {
     const data = this.rs.getID(ind);
 
-    data.status = true;
+    let password = prompt('Please enter the password:');
+    if (password === 'OINK!!') {
+      data.status = true;
+    } else {
+      alert('Wrong password');
+    }
   }
 
   sortLocation() {
@@ -55,5 +65,6 @@ export class ReportComponent implements OnInit {
       return b.time_reported - a.time_reported;
     });
   }
+
   ngOnInit(): void {}
 }

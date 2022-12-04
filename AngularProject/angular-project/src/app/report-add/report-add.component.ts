@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ReportService } from '../report.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-add',
@@ -19,7 +20,7 @@ import { ReportService } from '../report.service';
 export class ReportAddComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private rs: ReportService, private report: ReportListComponent) {
+  constructor(private rs: ReportService, private router: Router) {
     let formControls = {
       name: new FormControl('', [
         Validators.required,
@@ -68,5 +69,6 @@ export class ReportAddComponent implements OnInit {
 
   onSubmit(values: any) {
     this.rs.add(values);
+    this.router.navigate(['/']);
   }
 }
