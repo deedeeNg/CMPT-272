@@ -1,48 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReportService {
-  countID = 6;
-  report = [
-    {
-      location: 'Coquitlam',
-      name: 'Deedee',
-      time_reported: new Date().getTime(),
-      status: false,
-      id: 1,
-    },
-    {
-      location: 'Burnaby',
-      name: 'Paul',
-      time_reported: new Date().getTime(),
-      status: false,
-      id: 2,
-    },
-    {
-      location: 'Kenshington',
-      name: 'Kevin',
-      time_reported: new Date().getTime(),
-      status: false,
-      id: 3,
-    },
-    {
-      location: 'Vancouver',
-      name: 'Mark',
-      time_reported: new Date().getTime(),
-      status: false,
-      id: 4,
-    },
-    {
-      location: 'East Van',
-      name: 'Dustin',
-      time_reported: new Date().getTime(),
-      status: false,
-      id: 5,
-    },
-  ];
-  constructor() {}
+  countID = -1;
+  report: any[] = [];
+  constructor(private http: HttpClient) {
+    this.http
+      .get<Object>(
+        'https://272.selfip.net/apps/9WZC2YZZd1/collections/Report/documents/'
+      )
+      .subscribe((data: any) => {
+        for (let i = 0; i < data.length; i++) {
+          this.report.push(data[i].data);
+        }
+      });
+  }
 
   get() {
     return this.report;
@@ -58,9 +33,19 @@ export class ReportService {
 
   add(r: any) {
     r.time_reported = new Date().getTime();
-    r.id = this.countID++;
-    this.report.push(r);
-    console.log(this.report);
+    let num = -1;
+    for (let i = 0; i < this.report.length; i++) {
+      num = Math.max(num, this.report[i].id);
+    }
+    r.id = num + 1;
+    this.http
+      .post(
+        'https://272.selfip.net/apps/9WZC2YZZd1/collections/Report/documents/',
+        { key: `${r.id}`, data: r }
+      )
+      .subscribe((data: any) => {});
+
+    window.location.reload();
   }
 
   delete(del_report: number) {

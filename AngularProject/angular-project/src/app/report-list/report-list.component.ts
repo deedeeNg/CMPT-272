@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../report.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-report-list',
@@ -10,7 +11,7 @@ export class ReportListComponent implements OnInit {
   report: any[] = [];
   query: string = '';
 
-  constructor(private rs: ReportService) {}
+  constructor(private rs: ReportService, private http: HttpClient) {}
 
   onReportDelete(evt: any) {
     const del_report = evt['ind'];

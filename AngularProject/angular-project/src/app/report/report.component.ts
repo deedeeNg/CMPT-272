@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ReportMoreInfoComponent } from '../report-more-info/report-more-info.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ReportService } from '../report.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-report',
@@ -16,17 +17,30 @@ export class ReportComponent implements OnInit {
   constructor(
     private router: Router,
     private dialogRef: MatDialog,
-    private rs: ReportService
+    private rs: ReportService,
+    private http: HttpClient
   ) {}
 
   onDelete(evt: any, ind: number) {
     let password = prompt('Please enter the password:');
-    if (password === 'OINK!!') {
-      evt['ind'] = ind;
-      this.delete.emit(evt);
+
+    this.http
+      .get<Object>('https://api.hashify.net/hash/md5/hex?value=' + password)
+      .subscribe((data: any) => {
+        password = data.Digest;
+      });
+
+    if (password === '84892b91ef3bf9d216bbc6e88d74a77c') {
+      this.http
+        .delete<Object>(
+          `https://272.selfip.net/apps/9WZC2YZZd1/collections/Report/documents/${ind}/`
+        )
+        .subscribe((data: any) => {});
     } else {
       alert('Wrong password');
     }
+
+    window.location.reload();
   }
 
   openDialog(evt: any, ind: number) {
@@ -41,7 +55,12 @@ export class ReportComponent implements OnInit {
     const data = this.rs.getID(ind);
 
     let password = prompt('Please enter the password:');
-    if (password === 'OINK!!') {
+    this.http
+      .get<Object>('https://api.hashify.net/hash/md5/hex?value=' + password)
+      .subscribe((data: any) => {
+        password = data.Digest;
+      });
+    if (password === '84892b91ef3bf9d216bbc6e88d74a77c') {
       data.status = true;
     } else {
       alert('Wrong password');
