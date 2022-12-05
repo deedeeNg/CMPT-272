@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ReportListComponent } from '../report-list/report-list.component';
 import {
   AbstractControl,
@@ -20,6 +20,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReportAddComponent implements OnInit {
   form: FormGroup;
+  report: any[] = [];
 
   constructor(
     private rs: ReportService,
@@ -70,7 +71,9 @@ export class ReportAddComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.report = this.rs.get();
+  }
 
   onSubmit(values: any) {
     this.rs.add(values);

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ReportService {
+  locations: any[] = [];
   countID = -1;
   report: any[] = [];
   constructor(private http: HttpClient) {
@@ -15,6 +16,7 @@ export class ReportService {
       .subscribe((data: any) => {
         for (let i = 0; i < data.length; i++) {
           this.report.push(data[i].data);
+          this.locations.push(data[i].location);
         }
       });
   }

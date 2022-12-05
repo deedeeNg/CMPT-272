@@ -8,7 +8,12 @@
       type="text"
       placeholder="LOCATION"
       formControlName="location"
-    /><br />
+      list="locations"
+    />
+    <datalist id="locations">
+      <option *ngFor="let r of report" [value]="r.location"></option>
+    </datalist>
+    <br />
     <input
       name="phone"
       type="text"
